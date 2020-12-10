@@ -1,0 +1,29 @@
+.setbg{
+    font-weight: #D3E6D6; 
+    //--background: url(../../../../assets/img/background.jpg) 0 0/100% 100% no-repeat;
+  }
+  .hide {
+      display: none;
+  }
+  .show{
+      display: block;
+  }
+  ion-list{
+    background-color: transparent;
+    ion-item{
+      --background:#feffff;
+      color:#1a3e14 !important;
+    }
+}
+ion-icon.userAvatar  {
+  width:100% !important;  
+  height : 100% !important;  
+  max-width: 100px !important;  //any size
+  max-height: 100px !important; //any size 
+}
+.user-name{
+    font-size: 15px;
+}
+.avatar-color {
+    color: green;
+}

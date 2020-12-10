@@ -1,0 +1,66 @@
+<ion-header class="header-color">
+  <ion-toolbar color="primary">
+     <ion-buttons slot="start">
+        <ion-button (click)="GoToHome()"><ion-icon name="arrow-round-back"></ion-icon></ion-button>
+     </ion-buttons>
+     <ion-title class="header-title">
+        Result
+     </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="content-background">
+  <div class="result">
+    <ion-grid>
+      <ion-row>
+        <!-- <ion-col size="4" style="margin: auto;" *ngIf="ShowTrophy == true && MatchTie === false">
+          <img src="../../../../assets/img/winnercup.png">
+        </ion-col> -->
+        <ion-col size="6" *ngIf="MatchTie === false">
+          <div class="result-won result-bolock">
+            <div class="name">{{Won}} Won</div>
+            <div class="percent">({{winnerScore}})</div>
+          </div>
+          <div class="vs">Vs</div>
+          <div class="result-lost result-bolock">
+            <div class="name">{{Lost}} Lost</div>
+            <div class="percent">({{LooserScore}})</div>
+          </div>
+        </ion-col>
+        <ion-col size="6" *ngIf="MatchTie === false">
+          <img src="{{WinnerImg}}" *ngIf="ShowTrophy==true" style="margin-top: 21px;">
+          <img src="{{LoserImg}}" *ngIf="ShowTrophy==false" style="margin-top: 21px;">
+        </ion-col>
+        <ion-col size="12" *ngIf="MatchTie === true">
+          <div class="result-lost result-bolock">
+            <div class="name">{{Won}}</div>
+            <div class="percent">({{winnerScore}})</div>
+          </div>
+          <div class="vs">Vs</div>
+          <div class="result-lost result-bolock">
+            <div class="name">{{Lost}}</div>
+            <div class="percent">({{LooserScore}})</div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <div *ngIf="(OppScore == MyScore)" style="font-size: 20px; color: #013044;">
+            {{ScoreTieMsg}}
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" style="font-size: 14px;">
+          Test ID: {{DisplayTestId}}
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div class="homescreen" style="display:block">
+    <ion-button *ngIf="AgainstId != '4'" expand="block" size="large" class="btn-take-quiz" (click)="Rematch()">Rematch</ion-button>
+    <br />
+    <ion-button expand="block" size="large" class="btn-take-quiz" style="--background: #227922" (click)="ScoreCard()">View Performance</ion-button>
+    <br />
+    <ion-button expand="block" size="large" class="btn-take-quiz" (click)="TakeAnotherQuiz()">Play Another Quiz</ion-button>
+  </div>
+</ion-content>

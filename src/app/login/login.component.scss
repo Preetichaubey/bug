@@ -1,0 +1,79 @@
+
+.setbg{
+  font-weight: #D3E6D6; 
+  //--background: url(../../assets/img/background.jpg) 0 0/100% 100% no-repeat;
+  //background-image: url('../../assets/img/background.jpg');
+  //background-size: cover;
+}
+
+ion-card {
+  border-radius: 12px !important;
+  box-shadow: none;
+}
+
+.storeCardHeader {
+  padding-top: 0;
+  font-size: 15rem;
+  //color: #1E4D4E;
+  //background-color: #c1efff;
+  text-align: center;
+}
+
+ion-card div.card-header  {
+  background-color: #0070a0;
+  color: white;
+  font-size: 1em !important;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 10px 10px 0 0;
+}
+
+ion-item-sliding .item {
+  background-color: #80B3A7;
+  color: #031728;
+}
+
+ion-item-sliding {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #D3E6D6;
+}
+
+ion-list .item {
+  border-bottom: none;
+  border-bottom-style: solid;
+  border-bottom-width: 1px !important;
+  border-bottom-color: #045f00 !important;
+  background-color: #D3E6D6 !important;
+  margin-top: 1px;
+  color: #031728;
+}
+ion-list .item p {
+  color: #1E4D4E;
+}
+
+ion-list .item .item-inner {
+  border-bottom-width: 0px;
+  border-bottom-style: solid;
+  border-bottom-color: #031728;
+}
+
+ion-card div.card-footer  {
+  background-color: #009440;
+  color: white;
+  font-size: 1.2em !important;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+}
+
+ion-card div.card-footer button  {
+  background-color: #009440;
+  color: white;
+  font-size: 1em !important;
+  font-style: bold;
+}
+
+img {
+  margin-bottom: 18px;
+}

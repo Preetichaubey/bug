@@ -1,0 +1,173 @@
+.hide{
+    display: none;
+}
+.setbg{
+    font-weight: #D3E6D6; 
+    //--background: url(../../../assets/img/background.jpg) 0 0/100% 100% no-repeat;
+    //background-image: url('../../assets/img/background.jpg');
+    //background-size: cover;
+  }
+  ion-select, .alert-radio-label.sc-ion-alert-md{
+      text-transform: capitalize !important;
+  }
+.btn-play-seleced-quiz{
+    padding: 10px 40px;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: #3ccaa0;
+    border: 2px solid #1da87f;
+    border-style: solid;
+    border-radius: 30px;
+    margin-top: 10px;
+    display: none;
+}
+.homescreen{
+    width: 100%;
+}
+.select-options-container {
+    position: absolute;
+    z-index: 100;
+    text-align: center;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 15px 10px;
+    img{
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0.2;
+        z-index: -1;
+    }
+    .subjects{
+        height: inherit;
+    }
+    .topics {
+        height: inherit;
+        display: none;
+    }
+    .against{
+        display: none;
+    }
+    .level{
+        display: none;
+    }
+    .play {
+        height: 100%;
+        display: none;
+        .option{
+            display: -webkit-inline-box;
+            display: inline-flex;
+            background-color: #0070a0;//#5b5b5b;
+            color: white;//#fbba00;
+            border-radius: 50px;
+            padding: 8px 25px 2px 25px;
+            margin-top: 200px;
+            font-size: 33px;
+            font-family: cursive;
+            box-shadow: 1px 1px 4px 2px #777671;
+        }
+    }
+    .select-position{
+        position: relative;
+        height: inherit;
+        .options-header{
+            /* position: absolute; */
+            h5{
+                background-color: #fbba00;
+                padding: 2px;
+                color: #58503f;
+                font-family: cursive;
+                font-weight: 600;
+                font-size: 25px;
+                border-radius: 10px;
+                box-shadow: 0px 0px 7px #694705;
+            }
+        }
+        .options-container {
+            position: absolute;
+            width: 100%;
+            padding: 5%;
+            height: 86%;
+            overflow-y: scroll;
+            bottom: -100%;
+            .option{
+                /* background-color: #5b5b5b;
+                box-shadow: 0 0 9px #4c493d; */
+                background-color: #2a9602;//#76ba1b;
+                //box-shadow: 0 0 9px #407700;
+                border-radius: 10px;
+                color: #f7f8f9;
+                font-family: cursive;
+                font-weight: 500;
+                padding: 8px;
+                font-size: 21px;
+                margin-top: 17px;
+                margin-bottom: 8px;
+            }
+            .selected-option {
+                background: linear-gradient(365deg, #9a4007, #ff8080, #e4640c);
+                box-shadow: 0px 0px 8px #bd5704;
+                color: #5f3500;
+            }
+        }
+        .against-container {
+            .option{
+                padding: 0px 15px 15px 15px;
+                background-color: #5b5b5b;
+                width: 0%;
+                margin-top: 15px;
+                margin-bottom: 15px;
+                margin-left: 50%;
+                border-radius: 10px;
+                color: white;
+                font-family: cursive;
+                //box-shadow: 0px 0px 2px 2px #7b7575;
+                height: 0px;
+                overflow: hidden;
+                position: relative;
+                .option-content{
+                    margin-top: 30px;
+                }
+                .info-btn{
+                    position: absolute;
+                    right: 5px;
+                    color: white;
+                }
+            }
+            .option-content ion-icon{
+                font-size: 52px;
+                color: white;
+                background-color: #fbba00;
+                border-radius: 50%;
+                //margin-top: 30px;
+            }
+        }
+        .ai-level-info-btn{
+            float: right;
+            margin-right: 5px;
+        }
+        
+        .level-container .option {
+            padding: 10px;
+            margin: 10px;
+            background-color: #5b5b5b;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            box-shadow: 0px 0px 3px 2px #adadad;
+            font-family: cursive;
+            width: 94%;
+            font-size: 19px;
+        }
+        .level-container .option:nth-child(odd) {
+            margin-left: 110%;
+        }
+        .level-container .option:nth-child(even) {
+            margin-left: -110%;
+        }
+    }
+}

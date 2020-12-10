@@ -1,0 +1,42 @@
+.setbg{
+    font-weight: #D3E6D6; 
+    --background: url(../../../assets/img/challenge-connect.jpg) 0 0/100% 100% no-repeat;
+  }
+.contact-us{
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: white;
+    //box-shadow: 1px 1px 4px 1px grey;
+}
+h2{
+    text-align: center;
+    border-bottom: 2px solid #1b7779;
+    color: #617b7b;
+    margin-bottom: 35px;
+}
+
+.contact-title{
+    color: #009342;
+    padding: 5px 37px;
+    font-size: 18px;
+}
+.contact-details{
+    font-size: 19px;
+    font-weight: 600;
+    color: #093738;
+    margin-bottom: 20px;
+    display: inline-flex;
+    ion-icon{
+        font-size: 20px;
+        background-color: #0070a0;
+        border-radius: 50%;
+        padding: 5px;
+        color: white;
+    }
+    span{
+        margin: auto;
+        color: #035375;
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,80 @@
+<ion-header>
+    <ion-toolbar color="primary">
+       <ion-grid>
+          <ion-row>
+             <ion-col size="6">
+                <h3>My Score</h3>
+                <p class="correct-count">0</p>
+             </ion-col>
+             <ion-col size="6">
+                <h3>Opponent Score</h3>
+                <p class="correct-count">0</p>
+             </ion-col>
+          </ion-row>
+       </ion-grid>
+    </ion-toolbar>
+ </ion-header>
+ <ion-content>
+    <ion-grid>
+       <ion-row>
+          <ion-col size="8">
+             <ion-item id="myTimer" class="timer ion-text-justify">
+                <ion-icon subtle name="stopwatch"></ion-icon>
+                40
+             </ion-item>
+          </ion-col>
+          <ion-col size="4" style="text-align: center; margin: auto;">
+             <ion-item>
+                Left:
+                   <span class="atext">
+                      5
+                   </span>
+             </ion-item>
+          </ion-col>
+       </ion-row>
+    </ion-grid>
+ 
+          <ion-card>
+             <div class="card-header">
+                <ion-row>
+                   <ion-col width-35>
+                      <span small>Question:</span>
+                   </ion-col>
+                   <ion-col width-25>
+                      <span></span>
+                   </ion-col>
+                </ion-row>
+             </div>
+             <ion-card-content>
+             <div background="secondary" style="font-size: 17px;font-weight: 600;">
+                <div>This is the question long enough. This is the question long enough. This is the question long enough.</div>
+             </div>
+          </ion-card-content>
+          </ion-card>
+       
+       <ion-list id="options" class="options">
+          <ion-item text-wrap class="item-text-wrap normal" id="A">
+             <h2>A</h2> &nbsp; &nbsp;
+             <p>This answer is long enough to check scroll. gfh This answer is long enough to check scroll.</p>
+          </ion-item>
+          <ion-item text-wrap class="item-text-wrap normal" id="B">
+             <h2>B</h2> &nbsp; &nbsp;
+             <span>2 This answer is long enough to check scroll. gfh This answer is long enough to check scroll.</span>
+          </ion-item>
+          <ion-item text-wrap class="item-text-wrap normal" id="C">
+             <h2>C</h2> &nbsp; &nbsp;
+             <p>3 This answer is long enough to check scroll. gfh This answer is long enough to check scroll.</p>
+          </ion-item>
+          <ion-item text-wrap class="item-text-wrap normal" id="D">
+             <h2>D</h2> &nbsp; &nbsp;
+             <p>4 This answer is long enough to check scroll. gfh This answer is long enough to check scroll.</p>
+          </ion-item>
+       </ion-list>
+    <div class="footer">
+       <ion-toolbar color="primary">
+             <ion-button position="end" ion-button icon-only>
+                 NEXT<ion-icon name="arrow-dropright-circle"></ion-icon>
+             </ion-button>
+       </ion-toolbar>
+    </div>
+ </ion-content>

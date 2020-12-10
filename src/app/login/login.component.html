@@ -1,0 +1,68 @@
+<ion-nav id="nav" [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+
+
+<ion-content padding class="page-login setbg">
+ 
+    <div>
+      <ion-card>
+        <ion-card-header class="storeCardHeader">
+          <img src="../../assets/img/Quiz2shine logo5.jpg" style="width: 78%; margin: auto;">
+          <!-- <ion-icon name="key"></ion-icon> -->
+        </ion-card-header>
+
+        <div class="card-header">
+          <ion-row >
+            <ion-col width-100>
+              <span *ngIf="title == 'Login'" >Please provide your Username and Password</span>
+            </ion-col>
+          </ion-row>
+        </div>
+
+        <div *ngIf="title == 'Login'" color="light">
+          <div class="spn" style="background: white; border-left: 1px solid #009440; border-right: 1px solid #009440;">
+          <ion-row>
+            <ion-col>
+              <ion-list  inset style="margin-top: 0px;">
+                
+                <ion-item>
+                  <ion-input type="email" placeholder="Email" name="email" [(ngModel)]="email" required></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="password" required></ion-input>
+                </ion-item>
+                
+              </ion-list>
+            </ion-col>
+          </ion-row>
+          </div>
+      </div>
+
+      <div class="card-footer">
+        <div *ngIf="IsLoggedIn">
+          <button full (click)="logOut()">Logout</button>
+        </div>
+        <div *ngIf="!IsLoggedIn">
+          <button full (click)="login()">Login</button>
+        </div>
+      </div>
+    </ion-card>
+    </div>
+
+    <ion-card *ngIf="title == 'Login'">
+      <div class="card-header">
+        <ion-row >
+          <ion-col width-100>
+            <span style="line-height: 30px;">Not registered yet?</span>
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <div class="card-footer">
+          <button full (click)="Register()">Signup</button>
+      </div>
+    </ion-card>
+    <div style="text-align: center; color: #ff1e1e; font-weight: 600;">
+      <ion-label (click)="ForgotPassworsd()">Forgot Password?</ion-label>
+    </div>
+</ion-content>

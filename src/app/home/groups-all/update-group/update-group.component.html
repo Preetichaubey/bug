@@ -1,0 +1,68 @@
+<ion-header class="header-color">
+  <ion-toolbar color="primary">
+     <ion-buttons slot="start">
+        <ion-back-button icon="arrow-round-back" defaultHref="/home"></ion-back-button>
+     </ion-buttons>
+     <ion-title class="header-title">
+        Quiz2Shine
+     </ion-title>
+     <ion-buttons slot="end">
+        <ion-button shape="round" (click)="SaveGroup()"><ion-icon name="checkmark"></ion-icon></ion-button>
+     </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="content-background">
+  <div class="panel">
+     <div class="friends-list">
+        <ion-list>
+           <ion-item *ngFor="let frnd of Friends; index as i" (click)="SelectFriend(frnd.id)">
+              <ion-avatar slot="start">
+                 <ion-icon class="userAvatar avatar-color" [ngClass]="FrndsSelected[i].icon" name="checkmark-circle-outline"></ion-icon>
+                 <img [src]="frnd.picture" [ngClass]="FrndsSelected[i].avatar">
+                 <!--<ion-icon class="userAvatar" name="person"></ion-icon>-->
+              </ion-avatar>
+              <ion-title>
+                 <div class="user-name">{{frnd.fname}}</div>
+                 <div class="school">{{frnd.schoolName}}</div>
+              </ion-title>
+              <ion-note slot="end">{{frnd.std}}<sup>th</sup></ion-note>
+           </ion-item>
+           <!--<ion-item>
+              <ion-avatar slot="start">
+                 <img src="">
+              </ion-avatar>
+              <ion-title>
+                 <div class="user-name">Kundan Patil</div>
+                 <div class="school">School Name</div>
+              </ion-title>
+              <ion-note slot="end">8<sup>th</sup></ion-note>
+           </ion-item>
+           <ion-item>
+              <ion-avatar slot="start">
+                 <ion-icon class="userAvatar avatar-color" name="checkmark-circle-outline"></ion-icon>
+                 <ion-icon class="userAvatar" name="person"></ion-icon>
+              </ion-avatar>
+              <ion-title>
+                 <div class="user-name">Kundan Patil</div>
+                 <div class="school">School Name</div>
+              </ion-title>
+              <ion-note slot="end">8<sup>th</sup></ion-note>
+           </ion-item>
+           <ion-item>
+              <ion-avatar slot="start">
+                 <ion-icon class="userAvatar avatar-color" name="checkmark-circle-outline"></ion-icon>
+                 <ion-icon class="userAvatar" name="person"></ion-icon>
+              </ion-avatar>
+              <ion-title>
+                 <div class="user-name">Kundan Patil</div>
+                 <div class="school">School Name</div>
+              </ion-title>
+              <ion-note slot="end">8<sup>th</sup></ion-note>
+           </ion-item>-->
+        </ion-list>
+     </div>
+  </div>
+  <div class="logo-background">
+   <img src="../../assets/img/Quiz2shine logo5.jpg">
+ </div>
+</ion-content>

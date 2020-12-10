@@ -1,0 +1,43 @@
+.setbg {
+  font-weight   : #D3E6D6;
+  //--background: url(../../assets/img/background.jpg) 0 0/100% 100% no-repeat;
+}
+
+ion-item {
+  margin-top   : 1px;
+  --color: #013044;
+  border-bottom: 1px solid #016900;
+}
+.t-n-c{
+  color:#013044;
+  .no{
+    color: red;
+  }
+  .yes{
+    color: #016900;
+  }
+}
+.btn-register{
+  --background: #016900;
+}
+.txt-danger {
+  color     : red;
+  font-size : 12px;
+  text-align: center;
+}
+
+.hide {
+  display: none;
+}
+
+ion-valid {
+  --highlight-background: white;
+}
+
+:host(.item-interactive.ion-valid) {
+  --highlight-background: white;
+}
+.alert-head .sc-ion-alert-md, .alert-title .sc-ion-alert-md {
+  color: green;
+  text-align: center;
+}

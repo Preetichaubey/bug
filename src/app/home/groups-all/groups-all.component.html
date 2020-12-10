@@ -1,0 +1,83 @@
+<ion-header class="header-color">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-round-back" defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="header-title">
+      Groups
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="content-background">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+ </ion-refresher>
+  <style>
+    .alert-radio-icon .sc-ion-alert-md {
+      display: none !important;
+    }
+  </style>
+  <div class="hide"></div><div clsas="show"></div>
+  <!--<ion-button (click)="presstest()" class="long-press">Press test</ion-button>-->
+  <div class="group-list">
+    <div class="group-container" *ngFor="let g of Groups">
+      <div class="group-title long-press" id="{{g.Id}}">
+        <div>
+          <button *ngIf="SelfUserId == g.AdminId" (click)="presentActionSheet(g.Id, true, g)" class="btn-id-{{g.Id}}" style="display: none;"></button>
+        </div>
+        <div>
+          <button *ngIf="SelfUserId != g.AdminId" (click)="presentActionSheet(g.Id, false, null)" class="btn-id-{{g.Id}}" style="display: none;"></button>
+        </div>
+        {{g.GroupName}}
+        <ion-button size="small" class="btn-delete" *ngIf="SelfUserId == g.AdminId" (click)="DeleteGroup(g.Id)">Delete
+        </ion-button>
+      </div>
+      <div class="group-members gid-{{g.Id}}">
+        <div class="member self">
+          <ion-note slot="start" style="color:#8bff00;">
+            <ion-icon name="radio-button-on"></ion-icon>
+          </ion-note>
+          You
+          <ion-note slot="end" *ngIf="SelfUserId == g.AdminId" style="float: right; color:#8bff00;">Admin</ion-note>
+          <ion-button class="btn-remove" (click)="LeftFromGroup(g.Id)" *ngIf="SelfUserId != g.AdminId" shape="round"
+            size="small">
+            <ion-icon name="close"></ion-icon>
+          </ion-button>
+        </div>
+        <div class="member others" *ngIf="SelfUserId != g.AdminId">
+          <ion-note slot="start" *ngIf="g.AdminStatus" style="color:#8bff00;">
+            <ion-icon name="radio-button-on"></ion-icon>
+          </ion-note>
+          <ion-note slot="start" *ngIf="!g.AdminStatus" style="color:#a79a5b;">
+            <ion-icon name="radio-button-off"></ion-icon>
+          </ion-note>
+          {{g.AdminName}}
+          <ion-note slot="end" style="float: right; color:#8bff00;">Admin</ion-note>
+        </div>
+        <div *ngFor="let m of g.Members">
+          <div class="member others">
+            <ion-note slot="start" *ngIf="m.Status" style="color:#8bff00;">
+              <ion-icon name="radio-button-on"></ion-icon>
+            </ion-note>
+            <ion-note slot="start" *ngIf="!m.Status" style="color:#a79a5b;">
+              <ion-icon name="radio-button-off"></ion-icon>
+            </ion-note>
+            {{m.Name}}
+            <ion-button class="btn-remove" (click)="RemoveFromGroup(g.Id, m.Id)" *ngIf="SelfUserId == g.AdminId"
+              shape="round" size="small">
+              <ion-icon name="close"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button class="btn-fab" (click)="CreateNewGroup()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <div class="logo-background">
+    <img src="../../assets/img/Quiz2shine logo5.jpg">
+  </div>
+</ion-content>

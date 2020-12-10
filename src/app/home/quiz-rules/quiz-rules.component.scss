@@ -1,0 +1,48 @@
+.setbg {
+    font-weight : #D3E6D6;
+    --background: url(../../../assets/img/challenge-connect.jpg) 0 0/100% 100% no-repeat;
+}
+
+.heading {
+    h3 {
+        text-align: center;
+        font-size : 22px;
+    }
+}
+
+h4 {
+    font-size      : 18px;
+    //border-bottom: 1px solid #af9560;
+    color          : #009342;
+}
+
+ion-card-content {
+    color: #013044;
+}
+
+ion-card {
+    background-color: white;
+}
+
+ul {
+    padding-left: 19px;
+    li::before {
+        content       : "\2022";
+        /* Add content: \2022 is the CSS Code/unicode for a bullet */
+        color         : red;
+        /* Change the color */
+        font-weight: bold;
+        /* If you want it to be bold */
+        display: inline-block;
+        /* Needed to add space between the bullet and the text */
+        width: 1em;
+        /* Also needed for space (tweak if needed) */
+        margin-left: -1em;
+        /* Also needed for space (tweak if needed) */
+    }
+}
+
+ion-icon {
+    font-size: 10px;
+    color    : red;
+}

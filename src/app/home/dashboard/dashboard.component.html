@@ -1,0 +1,62 @@
+<ion-header class="header-color">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-round-back" defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="header-title">
+      History
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="content-background">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+ </ion-refresher>
+  <ion-item class="subject-select">
+    <ion-select [(ngModel)]="SubjectId" placeholder="Subject" (ionChange)="SubjectChanged()" okText="Okay" cancelText="Dismiss">
+      <ion-select-option value="0">All Subjects</ion-select-option>
+      <ion-select-option *ngFor="let sub of SubjectList"  value="{{sub.id}}">{{sub.name}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <div class="data-container" style="height: 79%;
+  overflow: auto;">
+  <div *ngFor="let record of history">
+    
+    <ion-card class="history-card"  [ngClass]="(record.player_won=='player1')||(record.player_won==record.MyGroupId)?'won':'lost'">
+      <ion-card-header>
+        <div>
+          <span>{{record.sub_name}}</span>
+          <span class="date">{{record.created_at}}</span>
+        </div>
+        <div class="topics">
+          <span>Topic : </span>{{record.Topic_name}}
+        </div>
+      </ion-card-header>
+      <ion-card-content style="padding: 5px;">
+        <ion-grid *ngIf="historyType !== 'groups'">
+          <ion-row style="text-align: center; font-size: 18px;">
+            <ion-col size="3">You<br /><span class="score">({{record.p1_correct_count}})</span></ion-col>
+            <ion-col size="2"><span class="vs">Vs</span></ion-col>
+            <ion-col size="4">{{record.p2}}<br /><span class="score">({{record.p2_correct_count}})</span></ion-col>
+            <ion-col size="3" class="lost-color" *ngIf="record.player_won=='player2'">You Lost</ion-col>
+            <ion-col size="3" class="won-color" *ngIf="record.player_won=='player1'">You Won</ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-grid *ngIf="historyType === 'groups'">
+          <ion-row style="text-align: center; font-size: 18px;">
+            <ion-col size="3">{{record.Mygroupname}}<br /><span class="score">({{record.p1_correct_count}})</span></ion-col>
+            <ion-col size="2"><span class="vs">Vs</span></ion-col>
+            <ion-col size="4">{{record.p2}}<br /><span class="score">({{record.p2_correct_count}})</span></ion-col>
+            <ion-col size="3" class="lost-color" *ngIf="record.player_won==record.OppGroupId">You Lost</ion-col>
+            <ion-col size="3" class="won-color" *ngIf="record.player_won==record.MyGroupId">You Won</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  </div>
+  <div class="logo-background">
+    <img src="../../assets/img/Quiz2shine logo5.jpg">
+  </div>
+</ion-content>

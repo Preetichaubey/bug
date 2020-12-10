@@ -1,0 +1,205 @@
+.welcome-card img {
+  max-height: 35vh;
+  overflow: hidden;
+}
+.notification-Count{
+  position: absolute;
+  color: #fefffe;
+  z-index: 10;
+  background-color: #d80000;
+  border-radius: 100%;
+  padding: 2px 5px;
+  border: 1px solid gray;
+  margin-top: 7px;
+  margin-left: 7px;
+  font-size: 11px;
+}
+.setbg{
+  //font-weight: #D3E6D6; 
+  //--background: url(../../assets/img/cartoon-doodle.png) 100% 77% no-repeat;
+  --background: white;
+}
+.my-menu-container{
+  width: 100%;
+  position: fixed;
+  top: 43px;
+  height: 100%;
+  z-index: 1000;
+  margin-left:-100%;
+  display: none;
+  .info-btn{
+    position: absolute;
+    right: 51px;
+  }
+  .list-item-1{
+    --background:#fd8310;
+  }
+
+}
+.my-menu {
+  width: 80%;
+  top: 52px;
+  background-color: white;
+  height: 100%;
+  z-index: 1000;
+  overflow-y: auto;
+}
+.menu-side-click{
+  width: 20%;
+  top: 52px;
+  height: 100%;
+  z-index: 1000;
+}
+.menu-content {
+  background-color: #f6ffff;
+  margin-top: 60px;
+  padding-bottom: 70px;
+  border-right: 1px solid #8fb8c9;
+}
+.menu-header{
+  --color: white;
+  --background: #009342;
+  position: fixed;
+  z-index: 1000;
+  width: inherit;
+  height: 64px;
+  ion-title{
+    font-size: 19px;
+    div{
+      font-size: 13px;
+    }
+  }
+}
+.menu-list{
+  background-color: #f6ffff;
+}
+.menu-item{
+  --background: #f6ffff;
+  --color: #065980;
+  font-weight: 600;
+}
+.sub-menu-list-container{
+  --background: #d0f5f5;
+  height: 0px;
+  display: none;
+  border-top: 1px outset #3e6f6f;
+  border-bottom: 1px inset #2c6262;
+  --padding-start:0;
+  --padding-end: 0;
+  width: 106%;
+  .sub-menu-list{
+    background-color: #d0f5f5;
+    width: 100%;
+    padding: 0;
+    .sub-menu-item{
+      //--background: #d0f5f5;
+      --color: white;
+      font-weight: 600;
+      .info-btn{
+        right: 5px;
+      }
+    }
+    
+    .list-item-1{
+      --background:#76ba1b;//#fd8310;
+    }
+    .list-item-2 {
+      --background: #0070a0;//#76ba1b;
+    }
+    .list-item-3 {
+      --background: #76ba1b;//#0070a0;
+    }
+    .list-item-4 {
+      --background: #0070a0;//#ffa602;
+    }
+  }
+}
+ion-icon.userAvatar  {     
+  width:100% !important;
+  height : 100% !important;  
+  max-width: 100px !important;  //any size
+  max-height: 100px !important; //any size 
+}
+.menu-Visible{
+  background-color: #0070a0;
+}
+.menu-hidden{
+  background-color: #0070a0;
+}
+img {
+  margin-bottom: 10px;
+}
+//----------------------------
+.homescreen-container{
+  margin-top: 26px;
+  h2{
+    text-align: center;
+    margin-bottom: 98px;
+    position: relative;
+    img{
+      position: absolute;
+      width: 106px;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    span{
+      color: white;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: sans-serif;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 76px;
+    }
+  }
+  .Subject{
+    text-align: center;
+    font-size: 22px;
+    color: #dedede;
+    font-weight: 700;
+    line-height: 100px;
+    /* background-color: #0070a0;
+    border: 2px solid #00587d;
+    box-shadow: 2px 3px 6px 2px #09425d; */
+  }
+  .sub-1{
+    background-color: #6cad16;
+  }
+  .sub-2{
+    background-color: #ea7201
+  }
+  .sub-3{
+    background-color: #ffbf1d;//#ffa602;
+  }
+  .sub-4{
+    background-color: #0070a0;
+  }
+}
+.menu-icon-color{
+  color: #065980;
+}
+.sub-menu-icon-color{
+  color: white;
+}
+  .q2s-logo-home{
+    width: 110px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    bottom: 5px;
+  }
+  .item-inner {
+    padding-right: 0px!important;
+ }
+ .loader-css{
+   background-color:green;
+   --backdrop-opacity: 1;
+   --background: green;
+ }

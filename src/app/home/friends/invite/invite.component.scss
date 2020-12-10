@@ -1,0 +1,40 @@
+
+  h2{
+    text-align: center;
+    color: #5f3c08;
+    font-weight: 600;
+  }
+  .info-btn{
+    float: right;
+    margin-right: 5px;
+  }
+.social-container{
+  .social-share {
+    width: 205px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 20px 0px;
+    margin-top: 9px;
+    margin-bottom: 5px;
+    color: white;
+    ion-icon{
+      font-size: 38px;
+    }
+  }
+  .facebook {
+    background-color: #4267b2;
+  }
+  .email {
+    background-color: #ff5757;
+  }
+  .whatsapp {
+    background-color: #009342;
+    padding-bottom: 17px !important;
+    ion-icon{
+      background-color: white;
+      color: #00bb00;
+      margin-bottom: 6px;
+    }
+  }
+}

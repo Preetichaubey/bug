@@ -1,0 +1,123 @@
+<ion-header class="header-color">
+  <ion-toolbar color="primary">
+     <ion-buttons slot="start">
+        <ion-back-button icon="arrow-round-back" defaultHref="/home"></ion-back-button>
+     </ion-buttons>
+     <ion-title class="header-title">
+        Performance
+     </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content-background">
+  <div *ngIf="ShowData == true">
+     <ion-toolbar>
+        <ion-row>
+           <ion-col size="6">
+              <div class="result" [ngClass]="myClass">
+                 You {{myText}} <br /> {{MyScore}}% <br />
+                 <ion-icon [name]="MyIcon"></ion-icon>
+              </div>
+           </ion-col>
+           <ion-col size="6">
+              <div class="result" [ngClass]="OppClass">
+                 VP {{OppText}} <br /> {{OppScore}}% <br />
+                 <ion-icon [name]="OppIcon"></ion-icon>
+              </div>
+           </ion-col>
+        </ion-row>
+     </ion-toolbar>
+     <ion-card class="cls-card" *ngFor="let summary of quiz; index as i">
+        <ion-card-content style="padding: 0px;">
+           <div class="question" *ngIf="!summary.IsImg" [appMath]="Questions[i].mathml">
+           </div>
+           <div *ngIf="summary.IsImg">
+              <img [src]="summary.q">
+           </div>
+           <div class="answer">
+              Ans: ({{answerCharArray[i]}})&nbsp;<span [appMath]="answerTextArray[i].mathml"></span>
+           </div>
+           <div class="footer" [ngClass]="classArray[i]"><!-- {{quiz.IsImg}} -->
+              You have selected: <span *ngIf="answerGivenArray[i] != ''" >({{answerGivenArray[i]}})&nbsp;<span class="answer-text" [appMath]="answerGivenTextArray[i].mathml"></span></span>
+           </div>
+        </ion-card-content>
+     </ion-card>
+  </div>
+  <div *ngIf="TwoPlayerShowData == true">
+     <ion-toolbar>
+        <ion-row>
+           <ion-col size="6" class="result" [ngClass]="myClass">
+              You {{myText}} <br /> {{MyScore}} <br />
+              <ion-icon [name]="MyIcon"></ion-icon>
+           </ion-col>
+           <ion-col size="6" class="result" [ngClass]="OppClass">
+              {{res.oppname}} {{OppText}} <br /> {{OppScore}} <br />
+              <ion-icon [name]="OppIcon"></ion-icon>
+           </ion-col>
+        </ion-row>
+     </ion-toolbar>
+     <ion-card class="cls-card" *ngFor="let summary of res.Questions; index as i">
+        <ion-card-content style="padding: 0px;">
+           <div class="question" *ngIf="!summary.IsImg" [appMath]="Questions[i].mathml">
+           </div>
+           <div *ngIf="summary.IsImg">
+              <img [src]="summary.q">
+           </div>
+           <div class="answer">
+              Ans: ({{res.Questions[i].final_ans}})&nbsp;<span class="answer-text" [appMath]="answerTextArray[i].mathml"></span>
+           </div>
+           <div class="footer">
+              <div [ngClass]="classArray[i]">
+                 You have selected: <span *ngIf="res.Questions[i].given_ans != '1'">({{res.Questions[i].given_ans}})</span>
+              </div>
+              <div [ngClass]="OppclassArray[i]">
+                 Opponent answer: <span *ngIf="res.Questions[i].OppAns != '1'">({{res.Questions[i].OppAns}})</span>
+              </div>
+           </div>
+        </ion-card-content>
+     </ion-card>
+  </div>
+  <div *ngIf="GroupShowData == true">
+     <ion-toolbar>
+        <ion-row>
+           <ion-col size="6" class="result" [ngClass]="myClass">
+              {{GroupData.MyGroupName}} {{myText}} <br /> {{GroupData.MyGroupCount}} <br />
+              <ion-icon [name]="MyIcon"></ion-icon>
+           </ion-col>
+           <ion-col size="6" class="result" [ngClass]="OppClass">
+              {{GroupData.OppGroupName}} {{OppText}} <br /> {{GroupData.OppGroupCount}} <br />
+              <ion-icon [name]="OppIcon"></ion-icon>
+           </ion-col>
+        </ion-row>
+     </ion-toolbar>
+     <ion-card class="cls-card" *ngFor="let summary of GroupData.AllQ; index as i">
+        <ion-card-content style="padding: 0px;">
+           <div class="question" *ngIf="!summary.isImg" [appMath]="summary.question.mathml">
+           </div>
+           <div *ngIf="summary.isImg">
+              <img [src]="summary.question">
+           </div>
+           <div class="answer">
+              Ans: ({{summary.correctOption}})&nbsp;<span class="answer-text" [appMath]="summary.correctAnsString.mathml"></span>
+           </div>
+           <div class="footer">
+              <div [ngClass]="classArray[i]">
+                 Your Group: <span *ngIf="summary.MyGroupAns.Ans != '1'" >({{summary.MyGroupAns.Ans}})&nbsp;<span class="answer-text" [appMath]="summary.MyGroupAns.AnsString.mathml"></span></span>
+              </div>
+              <div [ngClass]="OppclassArray[i]">
+                 Opponent Group: <span *ngIf="summary.OppGroupAns.Ans != '1'">({{summary.OppGroupAns.Ans}})&nbsp;<span class="answer-text" [appMath]="summary.OppGroupAns.AnsString.mathml"></span></span>
+              </div>
+              <div class="my-group-resp">
+                 <h5>My Group Responses</h5>
+                 <div class="response" *ngFor="let m of summary.GroupMembersAns; index as j">
+                    <div class="m-name">{{m.Name}}</div>
+                    <div class="m-ans">
+                       Ans: ({{m.Ans}})&nbsp;<span class="answer-text" [appMath]="m.AnsString.mathml"></span>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </ion-card-content>
+     </ion-card>
+  </div>
+</ion-content>

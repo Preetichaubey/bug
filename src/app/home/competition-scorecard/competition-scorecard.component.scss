@@ -1,0 +1,79 @@
+
+    //div.scroll-content {
+        //font-weight: light;
+        //background-image: url('../../../assets/img/challenge-connect.jpg');
+        //background-size: cover;
+    //}
+    
+      
+    .cls-card {
+        border-radius: 10px; 
+        border-radius: 10px; 
+        border: 2px solid #026d02; 
+        margin: 10px 5px;
+        //box-shadow: 0px 0px 2px 0px #224b4c;
+    }
+    .question{
+        padding: 7px 5px; 
+        background-color: #0070a0; 
+        font-size: 17px; 
+        font-weight: 500;
+        color: white;
+    }
+    .answer{
+        padding: 7px 5px; 
+        font-size: 16px; 
+        background-color: white; 
+        color: #013044;
+        font-weight: 600;
+    }
+    .footer{ 
+        font-size: 15px;
+        color: white; 
+        background-color: white;
+        font-weight: 600;
+    }
+    .correct{
+        background-color: #026d02;
+        padding: 3px 6px;
+        border-bottom: 2px solid white;
+    }
+    .wrong{
+        background-color: #ef3c3c;
+        padding: 3px 6px;
+        border-bottom: 2px solid white;
+    }
+    .result{
+        text-align: center;
+        font-weight: 600;
+        padding: 5px 3px;
+        color: white;
+    }
+    .result-win{
+        background-color: #026d02;
+        border: 3px inset #0f9c0f;
+    }
+    .result-loose{
+        background-color: #ef3c3c;
+        border: 3px inset #ff2e2e;
+    }
+    .answer-text{
+        word-break: break-word;
+    }
+.my-group-resp {
+    background-color: #f7f7f7;
+    color: #485a71;
+    padding: 4px 8px;
+    h5 {
+        font-size: 15px;
+        font-weight: 600;
+        padding-top: 9px;
+    }
+    .response {
+        border-bottom: 1px solid gray;
+        margin: 5px;
+    }
+    .m-ans{
+        font-weight: 500;
+    }
+}

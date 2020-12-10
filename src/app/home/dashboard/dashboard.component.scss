@@ -1,0 +1,83 @@
+.setbg{
+    font-weight: #D3E6D6; 
+    --background: url(../../../assets/img/challenge-connect.jpg) 0 0/100% 100% no-repeat;
+  }
+  .subject-select{
+    position: fixed; 
+    width: 100%; 
+    z-index: 100;
+  }
+  .history-card{
+    color: #1b2b57;
+    font-size: 20px;
+    border-radius: 15px;
+  }
+  .lost{
+    //background-image: linear-gradient(#fffbf4, #dcb479);
+    background-color: white;
+    border: 2px solid #d00000;
+  }
+  .lost-color{
+    color: #a21515;
+    font-weight: 600;
+  }
+  .won{
+   // background-image: linear-gradient(#d3ffff,#79dcdc);
+   background-color: white;
+   border: 2px solid green;
+  }
+  .won-color{
+    color: #286304;
+    font-weight: 600;
+  }
+  .vs{
+    color: #013044;
+    font-weight: 600;
+    font-family: monospace;
+    font-style: oblique;
+  }
+  ion-card ion-card-header{
+    padding: 10px 10px 0px 10px;
+    color: #013044;
+    font-size: 17px;
+    font-weight: 600;
+    .date{
+      text-align: right;
+      float: right;
+      font-weight: 600;
+      color: #013044;
+    }
+  }
+  .score{
+    font-size: 15px;
+    color: #013044;
+  }
+  .topics{
+    font-weight: 700;
+    font-size: 15px;
+    span{
+      font-weight: 800;
+    }
+  }
+  .select-text{
+    color:#013044 !important;
+  }
+.dashboard-header{
+    text-align: center;
+    background-color: gray;
+    padding: 0px;
+    font-weight: 600;
+    color: whitesmoke;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    ion-col {
+        border-left: 1px solid;
+        border-right: 1px solid;
+        padding: 10px;
+        margin: auto;
+    }
+}
+ion-row.record-row{
+    text-align: center;
+    border-bottom: 1px solid #d4d4d4;
+}

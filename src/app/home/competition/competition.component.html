@@ -1,0 +1,99 @@
+<ion-header class="header-color">
+  <ion-toolbar color="primary">
+     <ion-buttons slot="start">
+        <ion-button (click)="BackBtn()"><ion-icon name="arrow-round-back"></ion-icon></ion-button>
+     </ion-buttons>
+     <ion-title class="header-title">
+        {{HeaderTitle}}
+     </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding class="welcome content-background">
+  <div class="select-options-container">
+   
+     <div class="topics">
+        <div class="select-position">
+           <div class="options-container">
+              <div class="option" *ngFor="let topic of TopicList; index as i" (click)="TopicSelected(topic.id)">
+                 <span>{{topic.name}}</span>
+              </div>
+           </div>
+        </div>
+     </div>
+    
+    
+     <div class="play">
+        <div class="option" (click)="Play()">
+              <div class="option-caption">Lets Quiz&nbsp;</div>
+              <div style="margin-top: 4px;"><ion-icon name="play-circle"></ion-icon></div>
+        </div>
+     </div>
+  </div>
+  <ion-slides loop="false" autoplay="false" index="1">
+     <ion-slide padding>
+        <!-- <div class="homescreen">
+           <ion-item>
+              <ion-label position="floating">Select Subject</ion-label>
+              <ion-select name="Subject" [(ngModel)]="SubjectId" (ionChange)="SubjectSelected($event)">
+                 <ion-select-option *ngFor="let sub of SubjectList" value="{{sub.id}}">{{sub.name}}</ion-select-option>
+              </ion-select>
+           </ion-item>
+           <br />
+           <ion-item [class.hide]="!IsSubjectSelected">
+              <ion-label position="floating">Select Topic</ion-label>
+              <ion-select name="Topic" [(ngModel)]="TopicId" (ionChange)="TopicSelected($event)">
+                 <ion-select-option *ngFor="let topic of TopicList" value="{{topic.id}}">{{topic.name}}
+                 </ion-select-option>
+              </ion-select>
+           </ion-item>
+           <br />
+           <ion-item [class.hide]="!IsTopicSelected">
+              <ion-label position="floating">Play Against</ion-label>
+              <ion-select name="Against" [(ngModel)]="PlayAgainstId" (ionChange)="AgainstSelected($event)">
+                 <ion-select-option value="1">Artificial Intelligence</ion-select-option>
+                 <ion-select-option value="2">Friends in real time</ion-select-option>
+                 <ion-select-option value="3">Like-minded people</ion-select-option>
+              </ion-select>
+           </ion-item>
+           <ion-list style="margin-top: 15px;" [class.hide]="!DisplayArtificialType">
+              <ion-radio-group>
+                 <ion-item>
+                    <ion-label>I am 100% accurate</ion-label>
+                    <ion-radio color="light" checked (ionSelect)="ArtificialSelected(1)" value="1"></ion-radio>
+                 </ion-item>
+
+                 <ion-item>
+                    <ion-label>I am correct most of the time</ion-label>
+                    <ion-radio color="light" (ionSelect)="ArtificialSelected(2)" value="2"></ion-radio>
+                 </ion-item>
+
+                 <ion-item>
+                    <ion-label>I am fast but make mistakes</ion-label>
+                    <ion-radio color="light" (ionSelect)="ArtificialSelected(3)" value="3"></ion-radio>
+                 </ion-item>
+
+                 <ion-item>
+                    <ion-label>I am unpredictable</ion-label>
+                    <ion-radio color="light" (ionSelect)="ArtificialSelected(4)" value="4"></ion-radio>
+                 </ion-item>
+              </ion-radio-group>
+           </ion-list>
+           <br />
+           <ion-item [class.hide]="!DisplayGroups">
+              <ion-label position="floating">Select Your Group</ion-label>
+              <ion-select name="Group" [(ngModel)]="GroupId" (ionChange)="GroupSelected()">
+                 <ion-select-option *ngFor="let group of Groups" value="{{group.Id}}">{{group.GroupName}}
+                 </ion-select-option>
+              </ion-select>
+           </ion-item>
+        </div> -->
+     </ion-slide>
+  </ion-slides>
+  <div style="text-align: center;">
+     <button [class.hide]="!DisplayPlayBtn" class="btn-play-seleced-quiz" (click)="Play()">Play</button>
+     <!-- <button [class.hide]="!DisplayProceedBtn" class="btn-play-seleced-quiz" (click)="GroupSelected()">Select Opponent Group</button> -->
+  </div>
+  <div class="logo-background">
+     <img src="../../assets/img/Quiz2shine logo5.jpg">
+   </div>
+</ion-content>

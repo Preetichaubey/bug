@@ -1,0 +1,53 @@
+
+.hide {
+  display: none !important;
+}
+.show {
+  display: block !important;
+}
+
+.alert-radio-icon .sc-ion-alert-md{
+  display: none !important;
+}
+.group-list{
+  margin-top: 10px;
+  margin-left: 7%;
+  width: 86%;
+  .group-container{
+    .group-title{
+      padding: 15px 15px;
+      color: #ffffff;
+      border-radius: 10px 10px 0px 0px;
+      font-weight: 600;
+      margin-top: 6px;
+      /* background-image: linear-gradient(#e8730c, #a57b1c); */
+      background-color: #76ba1b;
+        .btn-delete{
+          position: absolute;
+          right: 7%;
+          margin-top: -5px;
+          --background: #0070a0;
+        }
+    }
+    .group-members{
+      background-color: #c5ad9a;
+      overflow: auto;
+      height: 0px;
+      //display: none;
+      .member{
+        padding: 7px 15px;
+        line-height: 35px;
+        margin-bottom: 5px;
+        border-bottom: 1px solid #927253;
+        color: #270000;
+        .btn-remove{
+          float: right;
+        }
+      }
+    }
+  }
+}
+.btn-fab{
+  --color: #0070a0;
+  --background: none;
+}

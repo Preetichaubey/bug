@@ -1,0 +1,132 @@
+<ion-header class="header-color">
+  <ion-toolbar color="primary" style="padding-left:10px; display: none;">
+     Quiz2Shine
+  </ion-toolbar>
+  <ion-toolbar color="primary">
+     <ion-title class="header-title">
+        <ion-grid>
+           <ion-row>
+              <ion-col size="12" class="header-title-text">
+                 <ion-row *ngIf="againstId !== '4'">
+                    <ion-col size="6">
+                       <h3 class="user-score">You</h3>
+                       <p class="correct-count">{{Correct}}</p>
+                    </ion-col>
+                    <ion-col size="6">
+                       <h3 class="user-score">{{OppName}}</h3>
+                       <p class="correct-count">{{OppCorrect}}</p>
+                    </ion-col>
+                 </ion-row>
+                
+              </ion-col>
+           </ion-row>
+        </ion-grid>
+     </ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+     <ion-grid class="secondary-header2">
+        <ion-row>
+           <ion-col size="8">
+              <ion-item id="myTimer" class="timer ion-text-justify">
+                 <ion-icon subtle name="stopwatch" style="color: #009342; font-size: 27px;"></ion-icon>
+                 &nbsp;&nbsp;{{timer}}
+              </ion-item>
+           </ion-col>
+           <ion-col size="4">
+              <ion-item style="font-size: 19px; margin: auto; color: #009342; font-weight: 600; text-align: center;">
+                 Left: &nbsp;&nbsp;
+                 <span class="atext" *ngIf="(NumOfQ - (currQNum+1)) > -1" style="color: #ff5c5c;">
+                    {{NumOfQ - (currQNum+1)}}
+                 </span>
+              </ion-item>
+           </ion-col>
+        </ion-row>
+     </ion-grid>
+     <ion-grid class="group-ans-container" (click)="presentPopover()" *ngIf="againstId =='4'">
+        <ion-row class="group-ans">
+           <ion-col size="3" *ngFor="let m of MemberResponses; index as i"><span class="player">P{{m.PlayerIndex}} : </span><span class="ans">{{m.Ans}}</span></ion-col>
+        </ion-row>
+     </ion-grid>
+  </ion-toolbar>
+</ion-header>
+<div class="custome-loader">
+  <div class="close-loader">
+     <span (click)="CloseCustomeLoader()">X</span>
+  </div>
+  <div class="finding-img">
+     <img src="../../../assets/img/finding.gif">
+  </div>
+  <div class="finding-text">
+     Finding...
+  </div>
+  <div class="loader-q2s-logo">
+     <img src="../../../assets/img/Quiz2shinelogoSmall.jpg">
+  </div>
+</div>
+<ion-content>
+  
+
+
+  <div *ngIf="AnswerLoaded === true">
+     <ion-card>
+        <div class="card-header">
+           <ion-row>
+              <ion-col width-35 style="text-align: left; margin-left: 10px;">
+                 <span small>Question</span>
+              </ion-col>
+              <ion-col width-25>
+                 <span>{{question[this.currQNum].id}}</span>
+              </ion-col>
+           </ion-row>
+        </div>
+        <ion-card-content>
+           <div background="secondary" style="font-size: 14px;font-weight: 600; word-break: break-word;">
+              <div [appMath]="CurrQuestion[currQNum].mathml" *ngIf="!question[currQNum].IsImg"></div>
+              <div>
+                 <img [src]="question[currQNum].q" *ngIf="question[currQNum].IsImg" class="question-img">
+              </div>
+           </div>
+        </ion-card-content>
+     </ion-card>
+  
+     <ion-list id="options" class="options">
+        <ion-item text-wrap class="item-text-wrap" [ngClass]="cssClass['A']" id="A" *ngIf="Options.A.mathml !==''"
+           (click)="clickedRow('A')">
+           <h2>A</h2> &nbsp; &nbsp;
+           <p [appMath]="Options.A.mathml"></p>
+        </ion-item>
+        <ion-item text-wrap class="item-text-wrap" [ngClass]="cssClass['B']" id="B" *ngIf="Options.B.mathml !==''"
+           (click)="clickedRow('B')">
+           <h2>B</h2> &nbsp; &nbsp;
+           <p [appMath]="Options.B.mathml"></p>
+        </ion-item>
+        <ion-item text-wrap class="item-text-wrap" [ngClass]="cssClass['C']" id="C" *ngIf="Options.C.mathml !==''"
+           (click)="clickedRow('C')">
+           <h2>C</h2> &nbsp; &nbsp;
+           <p [appMath]="Options.C.mathml"></p>
+        </ion-item>
+        <ion-item text-wrap class="item-text-wrap" [ngClass]="cssClass['D']" id="D" *ngIf="Options.D.mathml !==''"
+           (click)="clickedRow('D')">
+           <h2>D</h2> &nbsp; &nbsp;
+           <p [appMath]="Options.D.mathml"></p>
+        </ion-item>
+        <ion-item text-wrap class="item-text-wrap" [ngClass]="cssClass['E']" id="E" *ngIf="Options.E.mathml !==''"
+           (click)="clickedRow('E')">
+           <h2>E</h2> &nbsp; &nbsp;
+           <p [appMath]="Options.E.mathml"></p>
+        </ion-item>
+     </ion-list>
+  </div>
+  <div class="footer">
+     <ion-toolbar color="primary">
+        <ion-button slot="start" icon-only (click)="btnQuit()" style="--background: #e44c00;">
+           Quit
+        </ion-button>
+        <ion-button slot="end" icon-only (click)="btnNextClicked()" style="--background: #009342;" *ngIf="againstId == '1' && AnswerLoaded === true">
+           {{btnText}}<ion-icon name="arrow-dropright-circle"></ion-icon>
+        </ion-button>
+
+
+     </ion-toolbar>
+  </div>
+</ion-content>

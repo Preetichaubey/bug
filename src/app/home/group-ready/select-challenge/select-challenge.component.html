@@ -1,0 +1,71 @@
+<ion-header class="header-color">
+  <ion-toolbar color="primary">
+     <ion-buttons slot="start">
+        <ion-back-button icon="arrow-round-back" defaultHref="/home"></ion-back-button>
+     </ion-buttons>
+     <ion-title class="header-title">
+        Select Challenge
+     </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="content-background">
+  <ion-segment>
+    <ion-segment-button value="1" checked background="primary" (click)="SelectChallenge(1)">
+      <ion-label>Available <br>Challenges</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="2" background="primary" (click)="SelectChallenge(2)">
+      <ion-label>New <br>Challenge</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <br/>
+  <div *ngIf="ChallengeType == 2" padding>
+   <br/>
+    <ion-item>
+      <ion-label position="floating">Select Subject</ion-label>
+      <ion-select name="Subject" [(ngModel)]="SubjectId" (ionChange)="SubjectSelected($event)">
+         <ion-select-option *ngFor="let sub of SubjectList" value="{{sub.id}}">{{sub.name}}</ion-select-option>
+      </ion-select>
+   </ion-item>
+   <br />
+   <ion-item [class.hide]="!IsSubjectSelected">
+      <ion-label position="floating">Select Topic</ion-label>
+      <ion-select name="Topic" [(ngModel)]="TopicId" (ionChange)="TopicSelected($event)">
+         <ion-select-option *ngFor="let topic of TopicList" value="{{topic.id}}">{{topic.name}}
+         </ion-select-option>
+      </ion-select>
+   </ion-item>
+   <br />
+  <br />
+  <div style="text-align: center;" *ngIf="IsTopicSelected == true">
+   <div style="font-size: 20px; padding: 5px 0px; margin-bottom: 10px; font-weight: 600; color: #003e5a; background-color: white;" (click)="SelectGroup()">Selected Group : {{OppGroupNameForQuiz}}</div>
+   <ion-button (click)="StartChallenge()">Start Challenge</ion-button>
+   </div>
+  </div>
+  <div *ngIf="ChallengeType == 1" padding>
+   <div class="notification">
+      <div *ngFor="let n of NotificationData">
+         <div class="item-note">
+            <div><span class="username">Challenged By: {{n.Heading}}</span></div>
+            <div class="description">Subject: {{n.SubHeading}}</div>
+            <div class="description">Topic: {{n.Message1}}</div>
+            <div class="Buttons">
+               <ion-button (click)="RejectGroupQuizRequest(n.Id1)" size="small">Reject</ion-button>
+               <ion-button (click)="AcceptGroupQuizRequest(n.Id1, n.Id2, n.Id3, n.SubHeading, n.Message1)" size="small">Accept</ion-button>
+            </div>
+         </div>
+      </div>
+      <!--<div class="item-note">
+          <div><span class="username">User Name</span></div>
+          <div class="description">Subject: Subject Name</div>
+          <div class="description">Topic: Subject Name</div>
+          <div class="Buttons">
+             <ion-button size="small">Reject</ion-button>
+             <ion-button  size="small">Accept</ion-button>
+         </div>
+      </div>-->
+ </div>
+  </div>
+  <div class="logo-background">
+   <img src="../../assets/img/Quiz2shine logo5.jpg">
+ </div>
+</ion-content>

@@ -1,0 +1,52 @@
+<ion-header class="header-color">
+  <ion-toolbar color="primary">
+     <ion-buttons slot="start">
+        <ion-back-button icon="arrow-round-back" defaultHref="/home"></ion-back-button>
+     </ion-buttons>
+     <ion-title class="header-title">
+        Search Friend
+     </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content-background">
+  <div class="panel" style="height: 100%;">
+    <div class="title-section">
+       <ion-item class="group-name">
+          <ion-input type="text" minlength="3" maxlength="20" [(ngModel)]="SearchText" placeholder="Enter Email or Mobile"></ion-input>
+          <ion-button (click)="SearchFriend()"><ion-icon slot="icon-only" name="search"></ion-icon></ion-button>
+          <!-- <ion-spinner class="icon-group-chk" [ngClass]="ShowGroupNameLoader?'show':'hide'" name="lines"></ion-spinner> -->
+          <!-- <ion-icon class="icon-group-chk" [name]="GroupNameIcon"></ion-icon> -->
+       </ion-item>
+    </div>
+    <div class="friends-list" style="height: 70%; overflow-y: auto;">
+       <ion-list>
+          <ion-item *ngFor="let frnd of Friends; index as i">
+             <ion-avatar slot="start">
+                <ion-icon class="userAvatar avatar-color" [ngClass]="FrndsSelected[i].icon" name="checkmark-circle-outline"></ion-icon>
+                <img [src]="frnd.picture" [ngClass]="FrndsSelected[i].avatar">
+                <!--<ion-icon class="userAvatar" name="person"></ion-icon>-->
+             </ion-avatar>
+             <ion-title>
+               <div>
+                   <div class="user-name">{{frnd.fname}}</div>
+                  <div class="school" style="font-size: 15px;">{{frnd.schoolName}}</div>
+               </div>
+               <div>
+                  <ion-button color="primary" (click)="SendFriendRequest(frnd.id, frnd.std)">Send Request</ion-button>
+               </div>
+             </ion-title>
+             <ion-note slot="end">
+                  <span>{{frnd.std}}<sup>th</sup></span>
+             </ion-note>
+             <!-- <ion-buttons slot="end">
+               <ion-button color="primary">Send Request</ion-button>
+            </ion-buttons> -->
+          </ion-item>
+       </ion-list>
+    </div>
+ </div>
+ <div class="logo-background">
+   <img src="../../assets/img/Quiz2shine logo5.jpg">
+ </div>
+</ion-content>

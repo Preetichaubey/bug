@@ -1,0 +1,93 @@
+<ion-header class="header-color">
+   <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+         <ion-back-button icon="arrow-round-back" defaultHref="/home"></ion-back-button>
+      </ion-buttons>
+      <ion-title class="header-title">
+         Group Ready
+      </ion-title>
+   </ion-toolbar>
+</ion-header>
+<ion-content class="content-background">
+   <div class="group-list" *ngIf="ShouldDisplay">
+      <div class="group-container">
+         <div class="group-title long-press">
+            {{Group.GroupName}}
+         </div>
+         <div class="group-members">
+            <div class="member self">
+               <ion-note slot="start" style="color:#8bff00;">
+                  <ion-icon name="checkmark-circle"></ion-icon>
+               </ion-note>
+               You
+            </div>
+            <div *ngFor="let m of Group.Members">
+               <div class="member others">
+                  <ion-note slot="start" *ngIf="!m.Status && !DoesTimerEnd && (m.ExtraInfo=='1')">
+                     <ion-spinner class="icon-group-chk" style="color: white;" name="lines"></ion-spinner>
+                  </ion-note>
+                  <ion-note slot="start" *ngIf="(!m.Status && DoesTimerEnd) ||  (m.ExtraInfo=='0') " style="color:#a79a5b;">
+                     <ion-icon name="close-circle"></ion-icon>
+                  </ion-note>
+                  <ion-note slot="start" *ngIf="m.Status" style="color:#8bff00;">
+                     <ion-icon name="checkmark-circle"></ion-icon>
+                  </ion-note>
+                  {{m.Name}}
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- <div class="group-list">
+      <div class="group-container">
+        <div class="group-title long-press" id="{{Group.Id}}">
+          {{Group.GroupName}}
+          </ion-button>
+        </div>
+        <div class="group-members gid-{{Group.Id}}">
+          <div class="member self">
+            <ion-note slot="start" *ngIf="Group.AdminStatus" style="color:#a79a5b;">
+               <ion-icon name="close-circle"></ion-icon>
+             </ion-note>
+            You
+            <ion-note slot="end" *ngIf="SelfUserId == Group.AdminId" style="float: right; color:#8bff00;">Admin</ion-note>
+            
+          </div>
+          <div class="member others" *ngIf="SelfUserId != Group.AdminId">
+            <ion-note slot="start" *ngIf="Group.AdminStatus" style="color:#8bff00;">
+               <ion-spinner class="icon-group-chk" name="lines"></ion-spinner>
+            </ion-note>
+            <ion-note slot="start" *ngIf="!Group.AdminStatus" style="color:#a79a5b;">
+               <ion-icon name="close-circle"></ion-icon>
+            </ion-note>
+            {{g.AdminName}}
+            <ion-note slot="end" style="float: right; color:#8bff00;">Admin</ion-note>
+          </div>
+          <div *ngFor="let m of Group.Members">
+            <div class="member others">
+              <ion-note slot="start" *ngIf="m.Status" style="color:#8bff00;">
+               <ion-icon name="checkmark-circle"></ion-icon>
+              </ion-note>
+              <ion-note slot="start" *ngIf="!m.Status" style="color:#a79a5b;">
+               <ion-icon name="close-circle"></ion-icon>
+              </ion-note>
+              {{m.Name}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <div style="text-align: center;" *ngIf="Group_Status == 1 && AmIinitialiser == 1">
+      <ion-button (click)="NextBtn()">Next</ion-button>
+   </div>
+   <div *ngIf="AmIinitialiser != 1">
+      <div style="text-align: center; color: #6b4b1b">
+         <ion-spinner class="icon-group-chk" style="color: #6b4b1b;" name="lines"></ion-spinner>
+         <div>{{DisplayProgress}}</div>
+      </div>
+      
+   </div>
+   <div class="logo-background">
+      <img src="../../assets/img/Quiz2shine logo5.jpg">
+    </div>
+</ion-content>

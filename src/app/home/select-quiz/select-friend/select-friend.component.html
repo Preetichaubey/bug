@@ -1,0 +1,33 @@
+<ion-header class="header-color">
+  <ion-toolbar color="primary">
+    <ion-title class="header-title">Select Friend</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="content-background">
+  <div class="panel">
+     <div class="friends-list">
+        <ion-list *ngIf="ShowUsers">
+           <ion-item *ngFor="let frnd of Friends; index as i" (click)="SelectFriend(frnd.id)">
+              <ion-avatar slot="start">
+                 <ion-icon class="userAvatar avatar-color" [ngClass]="FrndsSelected[i].icon" name="checkmark-circle-outline"></ion-icon>
+                 <img [src]="frnd.picture" [ngClass]="FrndsSelected[i].avatar" *ngIf="frnd.id !== '0'">
+                 <ion-icon class="userAvatar" name="person" [ngClass]="FrndsSelected[i].avatar" *ngIf="frnd.id == '0'"></ion-icon>
+              </ion-avatar>
+              <ion-title>
+                 <div class="user-name">{{frnd.fname}}</div>
+                 <div class="school">{{frnd.schoolName}}</div>
+              </ion-title>
+              <ion-note slot="end">{{frnd.std}}<sup>th</sup></ion-note>
+           </ion-item>
+        </ion-list>
+     </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-button expand="full" size="large" [disabled]="FriendId === -1" (click)="Play()">Play</ion-button>
+</ion-footer>

@@ -1,0 +1,48 @@
+.setbg {
+    font-weight: #d3e6d6;
+    --background: url(../../../assets/img/challenge-connect.jpg) 0 0/100% 100% no-repeat;
+  }
+  .hide {
+    display: none;
+  }
+  .show {
+    display: block;
+  }
+  ion-note{
+    ion-icon{
+      font-size: 20;
+    }
+  }
+  .alert-radio-icon .sc-ion-alert-md{
+    display: none !important;
+  }
+  .group-list{
+    margin-top: 10px;
+    .group-container{
+      .group-title{
+        padding: 15px 15px;
+        color: white;
+        background-image: linear-gradient(#e8730c, #a57b1c);
+        .btn-delete{
+          position: absolute;
+          right: 10px;
+          margin-top: -5px;
+        }
+      }
+      .group-members{
+        background-color: #c5ad9a;
+        overflow: auto;
+        //display: none;
+        .member{
+          padding: 7px 15px;
+          line-height: 35px;
+          margin-bottom: 5px;
+          border-bottom: 1px solid #c5ad9a;
+          color: #270000;
+          .btn-remove{
+            float: right;
+          }
+        }
+      }
+    }
+  }

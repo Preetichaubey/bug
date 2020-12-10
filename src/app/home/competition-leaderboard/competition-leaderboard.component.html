@@ -1,0 +1,30 @@
+<ion-header class="header-color">
+  <ion-toolbar color="primary">
+     <ion-buttons slot="start">
+        <ion-back-button icon="arrow-round-back" defaultHref="/home"></ion-back-button>
+     </ion-buttons>
+     <ion-title class="header-title">
+      Competition Leaderboard
+   </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="content-background">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+ </ion-refresher>
+ 
+  <div class="list">
+    <div class="item" *ngFor="let user of leaderBoardData; index as i">
+      <span class="ranking" *ngIf="user.p2 !== 'You'">{{i+1}}</span>
+      <span class="ranking" *ngIf="user.p2 === 'You'">&nbsp;</span>
+      <span class="p-name">{{user.p2}}</span>
+      <span class="score">{{user.p2_correct_count}}</span>
+    </div>
+  </div>
+  <ion-list>
+    
+  </ion-list>
+  <div class="logo-background">
+    <img src="../../assets/img/Quiz2shine logo5.jpg">
+  </div>
+</ion-content>

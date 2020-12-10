@@ -1,0 +1,73 @@
+<ion-header class="header-color">
+    <ion-toolbar color="primary">
+       <ion-buttons slot="start">
+          <ion-back-button icon="arrow-round-back" defaultHref="/home"></ion-back-button>
+       </ion-buttons>
+       <ion-title class="header-title">
+         Notifications
+      </ion-title>
+       <ion-buttons slot="end">
+         <ion-button shape="round" (click)="RemoveAllNtfns()">
+            <ion-icon name="close-circle-outline"></ion-icon>
+         </ion-button>
+         <ion-button shape="round" (click)="Refresh()">
+            <span class="notification-Count" *ngIf="NotifnCount>0">{{NotifnCount}}</span>
+            <ion-icon name="refresh"></ion-icon>
+         </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+ </ion-header>
+ <ion-content class="content-background">
+     <div class="notification">
+         <div *ngFor="let n of NotificationData">
+            <div class="item-note" *ngIf="n.status == 0 && (n.NotificationType == '2' || n.NotificationType == '3')">
+               <div><span class="username">{{n.Heading}}</span></div>
+               <div class="description">Subject: {{n.Message1}}</div>
+               <div class="description">Topic: {{n.Message2}}</div>
+               <div class="Buttons">
+                  <ion-button (click)="RejectRequest(n.Id2, n.NotificationType)" size="small">Reject</ion-button>
+                  <ion-button (click)="AcceptRequest(n.Id2, n.NotificationType)" size="small">Accept</ion-button>
+               </div>
+            </div>
+            <div class="item-note" *ngIf="n.status == 0 && (n.NotificationType == '5')">
+               <div><span class="username">{{n.Heading}}</span></div>
+               <div class="description">Subject: {{n.Message1}}</div>
+               <div class="description">Topic: {{n.Message2}}</div>
+               <div class="Buttons">
+                  <ion-button (click)="AI_LikeMindedRequest('2', n.Id2)" size="small">Reject</ion-button>
+                  <ion-button (click)="AI_LikeMindedRequest('1', n.Id2)" size="small">Accept</ion-button>
+               </div>
+            </div>
+            <div class="item-note" *ngIf="n.status == 0 && n.NotificationType == 'joingroup'">
+               <div><span class="username">Group Join Request</span></div>
+               <div class="description">Created by: {{n.Heading}}</div>
+               <div class="description">Group Name: {{n.SubHeading}}</div>
+               <div class="Buttons">
+                  <ion-button (click)="RejectGroupJoinRequest(n.Id1)" size="small">Reject</ion-button>
+                  <ion-button (click)="AcceptGroupJoinRequest(n.Id1, n.NotificationType)" size="small">Accept</ion-button>
+               </div>
+            </div>
+            <div class="item-note" *ngIf="n.status == 0 && n.NotificationType == 'groupReady'">
+               <div><span class="username">Group Quiz Request</span></div>
+               <div class="description">Initiated By: {{n.Heading}}</div>
+               <div class="description">For Group: {{n.SubHeading}}</div>
+               <div class="Buttons">
+                  <ion-button (click)="RejectGroupQuizRequest(n.Id1)" size="small">Reject</ion-button>
+                  <ion-button (click)="AcceptGroupQuizRequest(n.Id1)" size="small">Accept</ion-button>
+               </div>
+            </div>
+         </div>
+         <!--<div class="item-note">
+             <div><span class="username">User Name</span></div>
+             <div class="description">Subject: Subject Name</div>
+             <div class="description">Topic: Subject Name</div>
+             <div class="Buttons">
+                <ion-button size="small">Reject</ion-button>
+                <ion-button  size="small">Accept</ion-button>
+            </div>
+         </div>-->
+    </div>
+    <div class="logo-background">
+      <img src="../../assets/img/Quiz2shine logo5.jpg">
+    </div>
+ </ion-content>

@@ -1,0 +1,46 @@
+<ion-header class="header-color">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-round-back" defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="header-title">
+      Payment History
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="content-background">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+ </ion-refresher>
+  <div class="data-container" style="height: 79%;
+  overflow: auto;">
+    <ion-card class="history-card" *ngFor="let record of MyRecord" [ngClass]="{'lost' : record.days < 0, 'won' : record.days >0}">
+      <ion-card-header style="padding-bottom: 0px;"> 
+        
+        <div class="topics">
+          <span>Plan Name : </span>{{record.duration}}
+        </div>
+        <div class="topics" style="padding-top: 5px;">
+          <span>Amount : </span>{{record.amount}}rp
+        </div>
+        <div class="topics" style="padding-top: 5px;">
+          <span>Mode : </span>{{record.mode}}
+        </div>
+      </ion-card-header>
+      <ion-card-content style="padding: 5px;">
+        <ion-grid>
+          <ion-row style="text-align: center; font-size: 13px;">
+            <ion-col size="5">Date : <span class="score">{{record.created_at | date :  "dd/MM/y"}}</span></ion-col>
+            <ion-col size="7">Expired Date : <span class="score">{{record.expiry_date | date :  "dd/MM/y"}}</span></ion-col>
+           
+          </ion-row>
+        </ion-grid>
+
+      </ion-card-content>
+    
+    </ion-card>
+  </div>
+  <div class="logo-background">
+    <img src="../../assets/img/Quiz2shine logo5.jpg">
+  </div>
+</ion-content>

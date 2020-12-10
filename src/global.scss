@@ -1,0 +1,108 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+.alert-radio-icon.sc-ion-alert-md {
+    left: 10px !important;
+}
+.alert-radio-label.sc-ion-alert-md{
+    padding-left: 15px !important;
+    padding-right: 10px !important;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+    white-space: pre-line !important;
+}
+.group-ans-popoverclass {
+    --min-width: 85%;
+  }
+.header-title{
+    
+    .header-logo{
+        width: 100%;
+        //padding:1px;
+        margin:auto;
+    }
+    .header-title-text{
+        margin: auto;
+    }
+}
+.content-background {
+    /* --background: #48CE8B;
+    --background: -webkit-linear-gradient(top, #48CE8B, #009343);
+    --background: -moz-linear-gradient(top, #48CE8B, #009343);
+    --background: linear-gradient(to bottom, #48CE8B, #009343); */
+    --background: white;
+    position: relative;
+    .logo-background{
+        position: fixed;
+        left:0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        width: 70px;
+        bottom: 10px;
+    }
+}
+.header-color{
+    ion-toolbar{
+        --ion-color-base: #0070a0 !important;
+        --ion-color-shade: #00587d !important;
+        --ion-color-tint: #1377a2 !important;
+    }
+    ion-title.header-title{
+        margin-right: 45px;
+        text-align: center;
+    }
+}
+/*
+------Green-------
+background: #48CE8B;
+background: -webkit-linear-gradient(top, #48CE8B, #009343);
+background: -moz-linear-gradient(top, #48CE8B, #009343);
+background: linear-gradient(to bottom, #48CE8B, #009343);
+
+----Sky Blue----
+background: #0377A1;
+background: -webkit-linear-gradient(bottom, #0377A1, #9AD5E2);
+background: -moz-linear-gradient(bottom, #0377A1, #9AD5E2);
+background: linear-gradient(to top, #0377A1, #9AD5E2);
+*/
+.hide {
+    display: none !important;
+  }
+  .show {
+    display: block !important;
+  }
+
+.info-btn{
+    color: #c75c00;
+    font-size: 27px;
+}
+.loader-css{
+    background-color:white;
+    background: url("./assets/img/Quiz2shinelogoSmall.jpg") 100% 77% no-repeat;
+    --backdrop-opacity: 1;
+    //--background: green;
+  }

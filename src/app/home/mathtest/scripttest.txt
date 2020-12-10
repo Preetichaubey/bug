@@ -1,0 +1,129 @@
+//AI Responces-------------------------------------------------------
+function AIResponce() {
+    if (this.againstId == '1') {
+        if (this.levelId == '1') {
+            this.OppCorrect++;
+            this.question[this.currQNum]["OppAns"] = this.question[this.currQNum]['final_ans'];
+            this.question[this.currQNum].OppTime = this.question[this.currQNum]['ideal_time'];
+        } else if (this.levelId == '2') {
+            this.question[this.currQNum].OppTime = 15;
+            if (this.currQNum != 1 && this.currQNum != 3 && this.currQNum != 5) {
+                this.OppCorrect++;
+                this.question[this.currQNum]["OppAns"] = this.question[this.currQNum]['final_ans'];
+            } else if (this.question[this.currQNum]['final_ans'] == 'a') {
+                this.question[this.currQNum]["OppAns"] = "d";
+            } else {
+                this.question[this.currQNum]["OppAns"] = "a"
+            }
+        } else if (this.levelId == '3') {
+            this.question[this.currQNum].OppTime = 10;
+            if (this.currQNum != 1 && this.currQNum != 3 && this.currQNum != 5 && this.currQNum != 7 && this.currQNum != 9) {
+                this.OppCorrect++;
+                this.question[this.currQNum]["OppAns"] = this.question[this.currQNum]['final_ans'];
+            } else if (this.question[this.currQNum]['final_ans'] == 'a') {
+                this.question[this.currQNum]["OppAns"] = "d";
+            } else {
+                this.question[this.currQNum]["OppAns"] = "a"
+            }
+        } else if (this.levelId == '4') {
+            this.question[this.currQNum].OppTime = 2;
+            this.question[this.currQNum]["OppAns"] = this.AIRandomAns().toLowerCase();
+            if (this.question[this.currQNum]['final_ans'].toUpperCase() === this.question[this.currQNum]['OppAns'].toUpperCase()) {
+                this.OppCorrect++;
+            }
+        }
+    }
+}
+function AICorrectAnsTime(levelId) {
+    if (levelId == '1') {
+        return "max";
+    } else if (levelId == '2') {
+        return "105";
+    } else if (levelId == '3') {
+        return "50";
+    } else if (levelId == '4') {
+        return "0";
+    }
+    return "";
+}
+function AIRandomAns() {
+    var x = Math.floor((Math.random() * 4) + 1);
+    var ans = "";
+    ans = (x == 1) ? "A" : (x == 2) ? "B" : (x == 3) ? "C" : (x == 4) ? "D" : "A";
+    console.log("AI Answer: ", ans);
+    return ans;
+}
+
+//AI Result Calculations--------------------------------------------------------
+function AIWinner() {
+    this.dbService.GetPropertyAsPromise("OppResult").then(_OppScore => {
+        this.OppScore = +_OppScore;
+        this.dbService.GetPropertyAsPromise("MyResult").then(_myScore => {
+            this.MyScore = +_myScore;
+            setTimeout(() => {
+                if (this.OppScore > this.MyScore) {
+                    console.log("You loose");
+                } else if (this.OppScore < this.MyScore) {
+                    console.log("You Win");
+                } else {
+                    this.dbService.GetPropertyAsPromise("MyCorrectTime").then(_myTime => {
+                        this.dbService.GetPropertyAsPromise("OppCorrectTime").then(_OppTime => {
+                            if (_OppTime == "max") {
+                                console.log("You Win");
+                            } else if (+_OppTime < +_myTime) {
+                                console.log("You loose");
+                            } else {
+                                console.log("You Win");
+                            }
+                        });
+                    });
+                }
+
+            }, 400);
+            this.loadCrrQuizSummary();
+        });
+    });
+}
+
+function loadCrrQuizSummary() {
+    this.dbService.GetPropertyAsPromise('currQuiz').then(
+        data => {
+            console.log(data);
+
+            if (data && typeof data != undefined && data != null) {
+                setTimeout(() => {
+                    this.quiz = JSON.parse(data);
+                    let c = '';
+                    for (let i = 0; i < this.quiz.length; i++) {
+                        c = this.quiz[i].final_ans;
+                        console.log("Answer :" + c.toUpperCase() + " : " + this.quiz[i].options[c.toUpperCase()]);
+                        let givenAns = this.quiz[i].given_ans;
+                        let cl = 'correct';
+                        if (typeof givenAns != undefined && givenAns && givenAns != '') {
+                            givenAns = (this.quiz[i].given_ans).toUpperCase();
+                            console.log("ans = " + this.quiz[i].final_ans.toUpperCase() + " & given = " + givenAns);
+                            if (this.quiz[i].final_ans.toUpperCase() == givenAns) {
+                                cl = 'correct';
+                            } else {
+                                cl = 'wrong';
+                            }
+                        } else {
+                            givenAns = '';
+                            cl = 'wrong';
+                        }
+                        this.Questions[i] = { mathml: this.quiz[i].q };
+                        this.answerCharArray[i] = c.toUpperCase();
+                        this.answerTextArray[i] = { mathml: this.quiz[i].options[c.toUpperCase()] };
+                        this.answerGivenArray[i] = givenAns;
+                        this.classArray[i] = cl;
+                    }
+                    console.log(this.quiz);
+                    console.log(this.answerTextArray);
+                    setTimeout(() => {
+                        this.ShowData = true;
+                    }, 100);
+                }, 100);
+            }
+        }
+    );
+}

@@ -1,0 +1,51 @@
+<ion-header class="header-color">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-round-back" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="header-title">
+      Competition Registration
+   </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="page-login setbg content-background">
+  <style>
+    
+    .is-invalid {
+      border-bottom: 1px solid red !important;
+    }
+    </style>
+  <ion-card style="padding: 10px;" color="light">
+    <form>
+      
+        <div>
+          <ion-item [class.is-invalid]="!IsValid_subject">
+            <ion-label>Subject *</ion-label>
+            <ion-select value="0" name="subject" okText="Okay" [(ngModel)]="SubjectId" cancelText="Dismiss">
+              <ion-select-option *ngFor="let sub of SubjectList; index as i" value="{{sub.id}}" (ionSelect)="Validate_subject()">{{sub.name}}</ion-select-option>
+             
+            </ion-select>
+          </ion-item>
+        </div>
+
+        <ion-item [class.is-invalid]="!IsValid_subscription">
+          <ion-label>Subscription Plan *</ion-label>
+          <ion-select value="0" name="subscription" okText="Okay" [(ngModel)]="SubscriptionId" (ionChange)="getSubscription()" cancelText="Dismiss">
+            <ion-select-option *ngFor="let duration of DurationList; index as i" value="{{duration.id}}" (ionSelect)="Validate_subscription()">{{duration.duration}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item *ngIf="SubscriptionAmount !=0">
+          <ion-label>Subscription Amount</ion-label>
+          <ion-input type="text" class="text-right" name="SubscriptionAmount" [(ngModel)]="SubscriptionAmount" readonly></ion-input>
+        </ion-item>
+       
+    </form>
+    <div class="card-footer">
+      <ion-button expand="full" (click)="TryRegisterCompetition()" class="btn-register">Register & Pay</ion-button>
+    </div>
+  </ion-card>
+  <div>
+      
+  </div>
+</ion-content>

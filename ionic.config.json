@@ -1,0 +1,11 @@
+{
+  "name": "Q2S",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "proxies": [{
+        "path": "/api",
+        "proxyUrl": "https://sarmicrosystems.in/quiztest/"
+    }]
+}

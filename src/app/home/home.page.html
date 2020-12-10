@@ -1,0 +1,214 @@
+
+<ion-header class="header-color">
+  <ion-toolbar color="primary">
+    <!--<ion-buttons slot="start">
+      <ion-menu-toggle>
+        <ion-button>
+          <ion-icon slot="icon-only" name="menu"></ion-icon>
+        </ion-button>
+      </ion-menu-toggle>
+    </ion-buttons>-->
+    <ion-buttons slot="start">
+      <ion-button (click)="triggermenu()" [ngClass]="menuClass"><ion-icon slot="icon-only" [name]="MenuBtnIcon"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <!-- 
+      <ion-button>
+        <ion-icon name="trophy"></ion-icon>
+      </ion-button> -->
+      <ion-button (click)="Leaderboard('overall')">
+        <ion-icon name="medal"></ion-icon>
+      </ion-button>
+      <ion-button (click)="ViewNotification()">
+        <span class="notification-Count" *ngIf="NotifnCount>0">{{NotifnCount}}</span>
+        <ion-icon name="notifications"></ion-icon>&nbsp;&nbsp;
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<div class="my-menu-container">
+  <div class="my-menu">
+    <div class="menu-header" (click)="MyProfile()">
+      <ion-toolbar class="menu-header">
+        <ion-avatar slot="start">
+          <ion-icon class="userAvatar" name="person"></ion-icon>
+        </ion-avatar>
+        <ion-title>
+          Hi {{Name}}
+          <div>Class : {{std}}</div>
+          <div>{{school}}</div>
+        </ion-title>
+      </ion-toolbar>
+    </div>
+    <div class="menu-content">
+      <ion-list class="menu-list">
+        <ion-item class="menu-item" (click)="ShowSubMenu('leaderboard')">
+          <ion-icon name="medal" class="menu-icon-color"></ion-icon>&nbsp;Leaderboard
+          <ion-icon name="arrow-dropdown" slot="end"></ion-icon>
+        </ion-item>
+        <ion-item class="sub-menu-list-container menu-leaderboard" id="leaderboard">
+          <ion-list class="sub-menu-list">
+            <ion-item class="sub-menu-item list-item-1" (click)="Leaderboard('overall')">
+              <ion-icon name="globe" class="sub-menu-icon-color"></ion-icon>&nbsp;Overall
+            </ion-item>
+            <ion-item class="sub-menu-item list-item-2" (click)="Leaderboard('friends')">
+              <ion-icon name="people" class="sub-menu-icon-color"></ion-icon>&nbsp;Friends
+            </ion-item>
+            <!-- <ion-item class="sub-menu-item list-item-3" (click)="Leaderboard('groups')">
+              <ion-icon name="contract" class="sub-menu-icon-color"></ion-icon>&nbsp;Groups
+            </ion-item> -->
+          </ion-list>
+        </ion-item>
+
+        <ion-item class="menu-item">
+          <span (click)="ShowSubMenu('history')">
+            <ion-icon name="book" class="menu-icon-color" style="font-size: 20px;position: absolute;"></ion-icon>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;History
+          </span>
+          <span class="info-btn" (click)="InfoBtn('hstry')">
+            <ion-icon name="information-circle-outline"></ion-icon>
+          </span>
+          <ion-icon name="arrow-dropdown" slot="end"></ion-icon>
+        </ion-item>
+        <ion-item class="sub-menu-list-container menu-history" id="history">
+          <ion-list class="sub-menu-list">
+            <ion-item class="sub-menu-item list-item-1" (click)="Dashboard('AI')">
+              <ion-icon name="settings" class="sub-menu-icon-color"></ion-icon>&nbsp;Virtual Player
+            </ion-item>
+            <ion-item class="sub-menu-item list-item-2" (click)="Dashboard('overall')">
+              <ion-icon name="globe" class="sub-menu-icon-color"></ion-icon>&nbsp;Overall
+            </ion-item>
+            <ion-item class="sub-menu-item list-item-3" (click)="Dashboard('friends')">
+              <ion-icon name="people" class="sub-menu-icon-color"></ion-icon>&nbsp;Friends
+            </ion-item>
+            <!-- <ion-item class="sub-menu-item list-item-4" (click)="Dashboard('groups')">
+              <ion-icon name="contract" class="sub-menu-icon-color"></ion-icon>&nbsp;Groups
+            </ion-item> -->
+          </ion-list>
+        </ion-item>
+
+        <ion-item class="menu-item">
+          <span (click)="ShowSubMenu('friends')">
+            <ion-icon name="people" class="menu-icon-color" style="font-size: 20px; position: absolute;"></ion-icon>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Friends
+          </span> 
+          <span class="info-btn" (click)="InfoBtn('frnd')">
+            <ion-icon name="information-circle-outline"></ion-icon>
+          </span>
+          <ion-icon name="arrow-dropdown" slot="end"></ion-icon>
+        </ion-item>
+        <ion-item class="sub-menu-list-container menu-friends" id="friends">
+          <ion-list class="sub-menu-list">
+            <ion-item class="sub-menu-item list-item-1">
+              <span (click)="Friends('myFriends')">
+                <ion-icon name="list" class="sub-menu-icon-color"></ion-icon>&nbsp;My Friends List
+              </span>
+              <span class="info-btn" (click)="InfoBtn('frndList')">
+                <ion-icon name="information-circle-outline"></ion-icon>
+              </span>
+            </ion-item>
+            <ion-item class="sub-menu-item list-item-2" (click)="Friends('inviteFriends')">
+              <ion-icon name="person-add" class="sub-menu-icon-color"></ion-icon>&nbsp;Invite Friends
+            </ion-item>
+            <ion-item class="sub-menu-item list-item-3" (click)="Friends('searchFriends')">
+              Search Friends
+            </ion-item>
+            <ion-item class="sub-menu-item list-item-2" (click)="Friends('friendsRequests')">
+              Friend Requests
+            </ion-item>
+          </ion-list>
+        </ion-item>
+
+        <!-- <ion-item class="menu-item" (click)="Groups()">
+          <ion-icon name="contract" class="menu-icon-color"></ion-icon>&nbsp;Play With Groups
+        </ion-item> -->
+        <ion-item class="menu-item" (click)="ShowSubMenu('competition')">
+          <ion-icon name="medal" class="menu-icon-color"></ion-icon>&nbsp;Competition
+          <ion-icon name="arrow-dropdown" slot="end"></ion-icon>
+        </ion-item>
+        <ion-item class="sub-menu-list-container menu-competition" id="competition">
+          <ion-list class="sub-menu-list">
+            <ion-item *ngIf="IsComptition == 'false'" class="sub-menu-item list-item-1" (click)="Competition('competition-registration')">
+              <ion-icon name="globe" class="sub-menu-icon-color"></ion-icon>&nbsp;Registration
+            </ion-item>
+            <ion-item *ngIf="IsComptition == 'true'" class="sub-menu-item list-item-1" (click)="Competition('Upgrade-Plan')" >
+              <ion-icon name="globe" class="sub-menu-icon-color"></ion-icon>&nbsp;Upgrade Plan
+            </ion-item>
+            
+            <ion-item class="sub-menu-item list-item-2" (click)="Competition('competition-leaderboard')">
+              <ion-icon name="trophy" class="sub-menu-icon-color"></ion-icon>&nbsp;Leaderboard
+            </ion-item>
+            <ion-item class="sub-menu-item list-item-3" (click)="Competition('competition-history')">
+              <ion-icon name="book" class="sub-menu-icon-color"></ion-icon>&nbsp;History
+            </ion-item>
+            <ion-item class="sub-menu-item list-item-4" (click)="Competition('play-quiz')">
+              <ion-icon name="brush" class="sub-menu-icon-color"></ion-icon>&nbsp;Play Quiz
+            </ion-item>
+            <ion-item class="sub-menu-item list-item-3" *ngIf="IsComptition == 'true'" (click)="Competition('competition-payment-history')">
+              <ion-icon name="cash" class="sub-menu-icon-color"></ion-icon>&nbsp;Payment History
+            </ion-item>
+           
+          </ion-list>
+        </ion-item>
+
+
+        <ion-item class="menu-item" (click)="QuizRules()">
+          <ion-icon name="brush" class="menu-icon-color"></ion-icon>&nbsp;Quiz Rules
+        </ion-item>
+        <ion-item class="menu-item" (click)="ContactUs()">
+          <ion-icon name="call" class="menu-icon-color"></ion-icon>&nbsp;Contact Us
+        </ion-item>
+        <ion-item class="menu-item" (click)="AboutUs()"><!-- href="http://www.sarmicrosystems.in/quiztest/web/aboutus.php"> -->
+          <ion-icon name="at" class="menu-icon-color"></ion-icon>&nbsp;About Us
+        </ion-item>
+        <ion-item class="menu-item" (click)="Logout()">
+          <ion-icon name="log-out" class="menu-icon-color"></ion-icon>&nbsp;Logout
+        </ion-item>
+        
+        <!-- <ion-item class="menu-item" (click)="forTest()">For test only</ion-item> -->
+      </ion-list>
+      <div class="test2shine-link" style="text-align: center; margin-top: 50px;">
+        <a href="https://test2shine.com" target="_blank"><img src="../../assets/img/Quiz2shine logo5.jpg" style="width: 37%;"></a>
+      </div>
+    </div>
+  </div>
+  <div class="menu-side-click" (click)="triggermenu()">
+
+  </div>
+</div>
+<ion-content class="content-background">
+  <div class="homescreen-container">
+    <h2>&nbsp;
+      <img src="../../assets/img/handshake.jpg">
+      <span>Lets Quiz</span>
+    </h2>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" *ngFor="let sub of SubjectList; index as i">
+          <div class="Subject sub-{{i+1}}" (click)="SubjectClicked(sub.id)">{{sub.name}}</div>
+        </ion-col>
+        <!-- <ion-col size="6">
+          <div class="Subject">Physics</div>
+        </ion-col>
+        <ion-col size="6">
+          <div class="Subject">Chemistry</div>
+        </ion-col>
+        <ion-col size="6">
+          <div class="Subject">Biology</div>
+        </ion-col> -->
+      </ion-row>
+    </ion-grid>
+  </div>
+  <img class="q2s-logo-home" src="../../assets/img/Quiz2shine logo5.jpg">
+  <!-- <ion-slides loop="false" autoplay="false" index="1" style="height:100vh;">
+    <ion-slide padding>
+      <div class="arrow-animate">
+        <img src="../../assets/img/arrow.png">
+      </div>
+      <div class="homescreen" style="display:block">
+        <button (click)="GoToQuiz()" class="btn-take-quiz">Take A Quiz</button>
+      </div>
+    </ion-slide>
+  </ion-slides> -->
+</ion-content>

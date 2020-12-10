@@ -1,0 +1,47 @@
+<ion-header class="header-color">
+   <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+         <ion-back-button icon="arrow-round-back" defaultHref="/home"></ion-back-button>
+      </ion-buttons>
+      <ion-title class="header-title">
+         Invite Friends 
+      </ion-title>
+   </ion-toolbar>
+</ion-header>
+<ion-content class="content-background">
+   <h2> &nbsp;
+      <span class="info-btn" (click)="InfoBtn('i')">
+         <ion-icon name="information-circle-outline"></ion-icon>
+       </span>
+   </h2>
+   <div class="social-container">
+      <div class="facebook social-share" (click)="FacebookShare()">
+         <ion-icon name="logo-facebook"></ion-icon><br>
+         <span>Facebook</span>
+      </div>
+      <div class="email social-share" (click)="EmailShare()">
+         <ion-icon name="mail"></ion-icon><br>
+         <span>Email</span>
+      </div>
+      <div class="whatsapp social-share" (click)="WhatsAppShare()">
+         <ion-icon name="logo-whatsapp"></ion-icon><br>
+         <span>WhatsApp</span>
+      </div>
+   </div>
+   <!-- <ion-button (click)="FacebookShare()" expand="block">
+      <ion-icon name="logo-facebook"></ion-icon>&nbsp;
+      Facebook
+   </ion-button>
+   <ion-button (click)="EmailShare()" expand="block">
+      <ion-icon name="mail"></ion-icon>&nbsp;
+      Email
+   </ion-button>
+   <ion-button (click)="WhatsAppShare()" expand="block">
+      <ion-icon name="logo-whatsapp"></ion-icon>&nbsp;
+      WhatsAppShare
+   </ion-button> -->
+   <br>
+   <div class="logo-background">
+      <img src="../../assets/img/Quiz2shine logo5.jpg">
+    </div>
+</ion-content>

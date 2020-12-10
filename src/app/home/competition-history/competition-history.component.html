@@ -1,0 +1,43 @@
+<ion-header class="header-color">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-round-back" defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="header-title">
+      History
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="content-background">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+ </ion-refresher>
+  <div class="data-container" style="height: 79%;
+  overflow: auto;">
+    <ion-card class="history-card" *ngFor="let record of MyRecord" [ngClass]="(record.player_won=='player1')||(record.player_won==record.MyGroupId)?'won':'lost'">
+      <ion-card-header>
+        <div style="width: 100%;float: left;">
+          <span class="date">{{record.created_at}}</span>
+        </div>
+        <div class="topics">
+          <span>Topic : </span>{{record.Topic_name}}
+        </div>
+      </ion-card-header>
+      <ion-card-content style="padding: 5px;">
+        <ion-grid>
+          <ion-row style="text-align: center; font-size: 18px;">
+            <ion-col size="3">You<br /><span class="score">({{record.p1_correct_count}})</span></ion-col>
+            <ion-col size="2"><span class="vs">Vs</span></ion-col>
+            <ion-col size="4">{{record.p2}}<br /><span class="score">({{record.p2_correct_count}})</span></ion-col>
+            <ion-col size="3" class="lost-color" *ngIf="record.player_won=='player2'">You Lost</ion-col>
+            <ion-col size="3" class="won-color" *ngIf="record.player_won=='player1'">You Won</ion-col>
+          </ion-row>
+        </ion-grid>
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div class="logo-background">
+    <img src="../../assets/img/Quiz2shine logo5.jpg">
+  </div>
+</ion-content>

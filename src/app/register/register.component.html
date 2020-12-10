@@ -1,0 +1,88 @@
+<ion-header class="header-color">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-round-back" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="header-title">
+      Register
+   </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="page-login setbg content-background">
+  <style>
+    
+    .is-invalid {
+      border-bottom: 1px solid red !important;
+    }
+    </style>
+  <ion-card style="padding: 10px;" color="light">
+    <form>
+        <ion-item [class.is-invalid]="!IsValid_fname">
+          <ion-label position="floating">First Name *</ion-label>
+          <ion-input type="text" name="fname" (ionChange)="Validate_fName()" [(ngModel)]="fname"></ion-input>
+        </ion-item>
+        <ion-item [class.is-invalid]="!IsValid_lname">
+          <ion-label position="floating">Last Name *</ion-label>
+          <ion-input type="text" name="lname" (ionChange)="Validate_lName()" [(ngModel)]="lname"></ion-input>
+        </ion-item>
+        <ion-item  [class.is-invalid]="!IsValid_email">
+          <ion-label position="floating">Email *</ion-label>
+          <ion-input type="email" name="email" (ionChange)="Validate_email()" [(ngModel)]="email"></ion-input>
+        </ion-item>
+        <ion-item style="display: none;">
+          <img [src]="imgURL" height="200" *ngIf="imgURL">
+          <input #file type="file" accept='image/*' (change)="preview(file.files)" name="ProfilePicture" class="profile-picture" style="display: none;">
+          <ion-button (click)="SelectProfile()">Profile Picture</ion-button>
+        </ion-item>
+        <ion-item [class.is-invalid]="!IsValid_mobile">
+          <ion-label position="floating">Mobile *</ion-label>
+          <ion-input type="number" name="mobile" (ionChange)="Validate_mobile()" [(ngModel)]="mobile" required></ion-input>
+        </ion-item>
+        <div>
+          <ion-item [class.is-invalid]="!IsValid_std">
+            <ion-label>Standard *</ion-label>
+            <ion-select name="standerd" okText="Okay" [(ngModel)]="std">
+              <ion-select-option value="6" (ionSelect)="Validate_std()">6th</ion-select-option>
+              <ion-select-option value="7" (ionSelect)="Validate_std()">7th</ion-select-option>
+              <ion-select-option value="8" (ionSelect)="Validate_std()">8th</ion-select-option>
+              <ion-select-option value="9" (ionSelect)="Validate_std()">9th</ion-select-option>
+              <ion-select-option value="10" (ionSelect)="Validate_std()">10th</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </div>
+        <ion-item>
+          <ion-label position="floating">School *</ion-label>
+          <ion-input type="text" name="school" [(ngModel)]="schoolname" required></ion-input>
+        </ion-item>
+        <!-- <ion-item  [class.is-invalid]="!IsValid_lname">
+          <ion-label position="floating">User Name *</ion-label>
+          <ion-input type="text" name="uname" (ionChange)="Validate_Username()" [(ngModel)]="username" required></ion-input>
+        </ion-item> -->
+        <ion-item [class.is-invalid]="!IsValid_password">
+          <ion-label position="floating">Password *</ion-label>
+          <ion-input type="password" name="password" (ionChange)="Validate_password()" [(ngModel)]="password" required></ion-input>
+        </ion-item>
+        <div [class.hide]="IsValid_password" style="background-color: white;" class="txt-danger">password should be 6 or more characters long</div>
+        <ion-item [class.is-invalid]="!IsValid_confPass">
+          <ion-label position="floating">Confirm Password *</ion-label>
+          <ion-input type="password" name="confPassword" (ionChange)="Validate_confPass()"  [(ngModel)]="confPassword" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Reference Code</ion-label>
+          <ion-input type="text" name="refCode" [(ngModel)]="refCode"></ion-input>
+        </ion-item>
+
+        <div style="padding: 10px;">
+          <ion-checkbox color="dark" name="termsandconditions" [(ngModel)]="IsAccepted"></ion-checkbox>&nbsp;&nbsp;
+          <ion-label class="ion-text-wrap t-n-c" *ngIf="IsAccepted === false">I accept the <span class="no" (click)="Tnc()" >Terms of Use</span> and <span class="no" (click)="PrivacyPolicy()">Privacy Policy</span></ion-label>
+          <ion-label class="ion-text-wrap t-n-c" *ngIf="IsAccepted === true">I accept the <span class="yes" (click)="Tnc()">Terms of Use</span> and <span class="yes" (click)="PrivacyPolicy()">Privacy Policy</span></ion-label>
+        </div>
+    </form>
+    <div class="card-footer">
+      <ion-button expand="full" (click)="TryRegister()" class="btn-register">Register</ion-button>
+    </div>
+  </ion-card>
+  <div>
+      
+  </div>
+</ion-content>

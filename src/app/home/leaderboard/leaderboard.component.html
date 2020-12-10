@@ -1,0 +1,92 @@
+<ion-header class="header-color">
+  <ion-toolbar color="primary">
+     <ion-buttons slot="start">
+        <ion-back-button icon="arrow-round-back" defaultHref="/home"></ion-back-button>
+     </ion-buttons>
+     <ion-title class="header-title">
+      Leaderboard
+   </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="content-background">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+ </ion-refresher>
+  <!--<div style="text-align: right; padding-right: 10px;">
+    <ion-button color="menucontent" size="small" (click)="ShowFilter()">Filter</ion-button>
+  </div>
+  <div class="modal-container">
+    <div class="modal-filter">
+      <div class="header">
+        Filter
+      </div>
+      <div class="content">
+        <ion-item>
+          <ion-label>Duration</ion-label>
+          <ion-select value="6" okText="Okay" [(ngModel)]="DurationId" cancelText="Dismiss">
+            <ion-select-option value="1">1 Week</ion-select-option>
+            <ion-select-option value="2">2 Weeks</ion-select-option>
+            <ion-select-option value="3">3 Weeks</ion-select-option>
+            <ion-select-option value="4">1 Month</ion-select-option>
+            <ion-select-option value="5">2 Months</ion-select-option>
+            <ion-select-option value="6">3 Months</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Subject</ion-label>
+          <ion-select value="0" [(ngModel)]="SubjectId" okText="Okay" cancelText="Dismiss">
+            <ion-select-option value="0">Overall</ion-select-option>
+            <ion-select-option *ngFor="let sub of SubjectList" value="{{sub.id}}">{{sub.name}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </div>
+      <div class="footer">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="6" style="text-align: center;">
+              <ion-button color="light" (click)="CancelFilter()">Cancel</ion-button>
+            </ion-col>
+            <ion-col size="6" style="text-align: center;">
+              <ion-button color="light" (click)="ApplyFilter()">Filter</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+  </div>
+  <div class="modal-background"></div>-->
+  
+  <ion-segment>
+    <ion-segment-button value="2" background="primary" (click)="SetDuration(2)" checked>
+      <ion-label>&nbsp;&nbsp;&nbsp;&nbsp;Monthly&nbsp;&nbsp;&nbsp;&nbsp;</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="1" background="primary" (click)="SetDuration(1)">
+      <ion-label>Cumulative</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <ion-item class="select-subject">
+    <ion-select value="0" [(ngModel)]="SubjectId" placeholder="Subject" (ionChange)="SubjectChanged()" okText="Okay" cancelText="Dismiss">
+      <ion-select-option value="0">All Subjects</ion-select-option>
+      <ion-select-option *ngFor="let sub of SubjectList"  value="{{sub.id}}">{{sub.name}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <div class="list">
+    <div class="item" *ngFor="let user of leaderBoardData; index as i">
+      <span class="ranking" *ngIf="user.p2 !== 'You'">{{i+1}}</span>
+      <span class="ranking" *ngIf="user.p2 === 'You'">&nbsp;</span>
+      <span class="p-name">{{user.p2}}</span>
+      <span class="score">{{user.p2_correct_count}}</span>
+    </div>
+  </div>
+  <ion-list>
+    <!--<ion-item *ngFor="let user of leaderBoardData; index as i">
+      <span class="ranking">{{i+1}}</span>
+      <span class="p-name">{{user.p2}}</span>
+      <span class="score">{{user.p2_correct_count}}</span>
+    </ion-item>-->
+  </ion-list>
+  <div class="logo-background">
+    <img src="../../assets/img/Quiz2shine logo5.jpg">
+  </div>
+</ion-content>

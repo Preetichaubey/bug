@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-round-back" defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="header-title">
+      Quiz2Shine
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-input type="text" name="qusId" style="color:black;" [(ngModel)]="QuestionID"></ion-input>
+    <ion-button (click)="SetQuestion()">Submit</ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  
+  <div *ngIf="AnswerLoaded === true">
+    <ion-card>
+      <div class="card-header">
+        <ion-row>
+          <ion-col width-35>
+            <span small>Question:</span>
+          </ion-col>
+          <ion-col width-25>
+            <span>{{question[0].id}}</span>
+          </ion-col>
+        </ion-row>
+      </div>
+      <ion-card-content>
+        <div background="secondary" style="font-size: 17px;font-weight: 600; word-break: break-word;">
+          <div [appMath]="CurrQuestion[0].mathml" *ngIf="!question[0].IsImg"></div>
+          <div>
+            <img [src]="question[0].q" *ngIf="question[0].IsImg" class="question-img">
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <ion-list id="options" class="options">
+      <ion-item text-wrap class="item-text-wrap" [ngClass]="cssClass['A']" id="A" *ngIf="Options.A.mathml !==''">
+        <h2>A</h2> &nbsp; &nbsp;
+        <p [appMath]="Options.A.mathml"></p>
+      </ion-item>
+      <ion-item text-wrap class="item-text-wrap" [ngClass]="cssClass['B']" id="B" *ngIf="Options.B.mathml !==''">
+        <h2>B</h2> &nbsp; &nbsp;
+        <p [appMath]="Options.B.mathml"></p>
+      </ion-item>
+      <ion-item text-wrap class="item-text-wrap" [ngClass]="cssClass['C']" id="C" *ngIf="Options.C.mathml !==''">
+        <h2>C</h2> &nbsp; &nbsp;
+        <p [appMath]="Options.C.mathml"></p>
+      </ion-item>
+      <ion-item text-wrap class="item-text-wrap" [ngClass]="cssClass['D']" id="D" *ngIf="Options.D.mathml !==''">
+        <h2>D</h2> &nbsp; &nbsp;
+        <p [appMath]="Options.D.mathml"></p>
+      </ion-item>
+      <ion-item text-wrap class="item-text-wrap" [ngClass]="cssClass['E']" id="E" *ngIf="Options.E.mathml !==''">
+        <h2>E</h2> &nbsp; &nbsp;
+        <p [appMath]="Options.E.mathml"></p>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div class="footer">
+    <ion-toolbar color="primary">
+      <ion-button slot="start" icon-only (click)="btnQuit()">
+        Quit
+      </ion-button>
+    </ion-toolbar>
+  </div>
+</ion-content>
